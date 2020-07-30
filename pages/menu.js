@@ -1,14 +1,16 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Menu() {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Bai Yok Modern Thai Cuisine</h1>
-      </main>
+      <Head>
+        <title>Bai Yok Modern Thai Cuisine</title>
+      </Head>
 
+      <main className={styles.main}>
+        <h1 className={styles.title}>Menu</h1>
+      </main>
     </div>
   )
 }
