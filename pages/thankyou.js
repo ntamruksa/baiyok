@@ -6,7 +6,7 @@ export default function Thankyou() {
     <section className='section-thankyou'>
       <div className='u-center-text u-margin-bottom-big'>
         <h2 className='heading-secondary u-margin-bottom-small'>Thank you.</h2>
-        <p className="paragraph-main">We appreciate your work and your cooperation towards helping our community fight against COVID-19</p>
+        <p className="paragraph-main px-4">We appreciate your work and your cooperation towards helping our community fight against COVID-19</p>
       </div>
     </section>
   )
