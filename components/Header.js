@@ -6,10 +6,10 @@ const Header = () => (
       <img src='/Logo-Baiyok-med.png' alt='Logo' className='header__logo' />
     </div>
     <div className='header__text-box'>
-      <h1 class='heading-primary'>
-        <span class='heading-primary--main'>Bai Yok</span>
-        <span class='heading-primary--est'>Est. 2001</span>
-        <span class='heading-primary--sub'>Modern Thai Cuisine</span>
+      <h1 className='heading-primary'>
+        <span className='heading-primary--main'>Bai Yok</span>
+        <span className='heading-primary--est'>Est. 2001</span>
+        <span className='heading-primary--sub'>Modern Thai Cuisine</span>
       </h1>
     </div>
     <div className='header__menu'>

@@ -41,15 +41,15 @@ export default function Covid() {
   }
   return (
     <section className='section-covid'>
-      <div className='u-center-text u-margin-bottom-big'>
+      <div className='u-center-text u-margin-bottom-med'>
         <h2 className='heading-secondary u-margin-bottom-small'>
           COVID-19 Sign In
         </h2>
-        <p className='paragraph-secondary'>
+        <p className='paragraph-secondary px-4'>
           For all customers we are obligated to take some of your details so the
           government can track any COVID-19 outbreaks in out community.
         </p>
-        <p className='paragraph-secondary'>
+        <p className='paragraph-secondary px-4'>
           Please enter your details below to help prevent the spreading of
           COVID-19
         </p>
