@@ -30,7 +30,8 @@ export default function Covid() {
     e.preventDefault()
     const data ={email, firstName, lastName, phone, optIn, date: new Date()}
     const payload ={text: JSON.stringify(data)}
-    fetch('https://hooks.slack.com/services/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', {
+    console.log('url', process.env.NEXT_PUBLIC_SLACK_HOOK_URL)
+    fetch(process.env.NEXT_PUBLIC_SLACK_HOOK_URL, {
       method: 'post',
       body: JSON.stringify(payload)
     }).then((res) => {
