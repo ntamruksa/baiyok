@@ -1,6 +1,10 @@
 .header {
-  height: 22vh;
-  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.3), rgba($color-primary-dark, 0.4));
+  height: 30vh;
+  @include respond(phone) {
+    height: 15vh;
+  }
+  // background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.3), rgba($color-primary-dark, 0.4));
+  background-image: url('/baiyok-banner.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top;
