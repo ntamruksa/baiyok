@@ -14,9 +14,9 @@ export default function Home() {
                         <p className="paragraph">Here at Bai Yok Modern Thai Cuisine in Castlecrag, we like to think we’re doing something a little bit different with the Thai canon. We look to traditional, but also try to provide something contemporary.</p>
                         <h3 className="heading-tertiary u-margin-bottom-small">Come and enjoy the best Thai food in Sydney.</h3>
                         <p className="paragraph">we combine spring rolls, classic soups, red and green curries and duck dishes with house favourites like Hoy Jor – crab, prawn, pork and water chestnut wrapped in soya paper and served with plum sauce – and Yum Ped Tod, duck with Lebanese cucumber, betel leaf and chilli lime dressing.</p>
-                        <Link href='/menu'>
+                        {/* <Link href='/menu'>
                           <a className="btn-text">See our meals &rarr;</a>
-                        </Link>
+                        </Link> */}
                     </div>
                     <div className="col-1-of-2">
                         <div className="composition">
