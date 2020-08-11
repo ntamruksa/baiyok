@@ -7,10 +7,10 @@ import { useRouter } from 'next/router'
 
 export default function Covid() {
   const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState(process.browser ? localStorage.getItem('covidEmail') :'')
+  const [firstName, setFirstName] = useState(process.browser ? localStorage.getItem('covidFirstName') :'')
+  const [lastName, setLastName] = useState(process.browser ? localStorage.getItem('covidLastName') :'')
+  const [phone, setPhone] = useState(process.browser ? localStorage.getItem('covidPhone') :'')
   const [optIn, setOptIn] = useState(false)
   const [party, setParty] = useState(1)
   const handleInputChange = (e) => {
@@ -38,7 +38,10 @@ export default function Covid() {
       method: 'post',
       body: JSON.stringify(payload)
     }).then((res) => {
-      console.log(res)
+      localStorage.setItem('covidEmail', email);
+      localStorage.setItem('covidFirstName', firstName);
+      localStorage.setItem('covidLastName', lastName);
+      localStorage.setItem('covidPhone', phone);
       router.push('/thankyou')
     })
   }
@@ -67,6 +70,7 @@ export default function Covid() {
               className='paragraph-secondary'
               type='email'
               onChange={handleInputChange}
+              value={email}
             />
           </Form.Group>
           <Form.Group controlId='formFirstName' className='u-margin-bottom-med'>
@@ -75,6 +79,7 @@ export default function Covid() {
               className='paragraph-secondary'
               type='text'
               onChange={handleInputChange}
+              value={firstName}
             />
           </Form.Group>
           <Form.Group controlId='formLastName' className='u-margin-bottom-med'>
@@ -83,6 +88,7 @@ export default function Covid() {
               className='paragraph-secondary'
               type='text'
               onChange={handleInputChange}
+              value={lastName}
             />
           </Form.Group>
           <Form.Group controlId='formPhone' className='u-margin-bottom-med'>
@@ -91,6 +97,7 @@ export default function Covid() {
               className='paragraph-secondary'
               type='number'
               onChange={handleInputChange}
+              value={phone}
             />
           </Form.Group>
           <Form.Group controlId='formParty' className='u-margin-bottom-med'>
