@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <section className='section section-hero' />
       <section className='section section-aboutus'>
-        <div className='u-center-text u-margin-bottom-big'>
+        <div className='u-center-text u-margin-bottom-med'>
           <h2 className='heading-secondary mx-4'>
             Welcome to Bai Yok Modern Thai Cousine
           </h2>
