@@ -1,7 +1,6 @@
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-
 
 // import styles from '../styles/Home.module.css'
 
@@ -33,7 +32,6 @@ export default function Covid() {
     e.preventDefault()
     const data ={email, firstName, lastName, phone, optIn, party, date: new Date()}
     const payload ={text: JSON.stringify(data)}
-    // console.log('url', process.env.NEXT_PUBLIC_SLACK_HOOK_URL)
     fetch(process.env.NEXT_PUBLIC_SLACK_HOOK_URL, {
       method: 'post',
       body: JSON.stringify(payload)
@@ -119,12 +117,12 @@ export default function Covid() {
               onClick={handleInputChange}
             />
           </Form.Group>
-          <button
-            type='submit'
-            className='btn btn--green btn--animated paragraph-secondary'
-            onClick={handleSubmitForm}>
-            Submit
-          </button>
+          <Button
+              className="btn-lg"
+              variant="outline-secondary"
+              onClick={handleSubmitForm}>
+              Submit
+            </Button>
         </Form>
       </div>
     </section>

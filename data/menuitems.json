@@ -1,0 +1,354 @@
+// entree
+{
+  "title" : "Vegetarian Spring Roll (4 Pcs)",
+  "subtitle" : "Deep fried Thai style vegetable spring roll served with plum sauce.",
+  "priceInCents" : 700,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Taw Hu Tod (6 Pcs)",
+  "subtitle" : "Deep fried bean curd with a crispy outside and soft center served with sweet chilli crushed peanut sauce.",
+  "priceInCents" : 700,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Satay (4 Pcs)",
+  "subtitle" : "Sliced chicken marinated with special Thai spices and BBQ on skewers served with homemade peanut sauce.",
+  "priceInCents" : 1000,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Curry Puff (4 Pcs)",
+  "subtitle" : "Minced Pork mixed with potato, curry powder wrapped in pastry and deep fried served with sweet cucumber salad sauce.",
+  "priceInCents" : 1000,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Hoy Jor (4 Pcs)",
+  "subtitle" : "Crab meat, prawn, pork mince and water chestnut wrapped with soya paper then deep fried served with plum sauce.",
+  "priceInCents" : 1200,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Crystal Prawn (3 Pcs)",
+  "subtitle" : "Fresh whole local prawn cutlet with marinated pork mince and Thai herbs wrapped in rice pastry and deep fried until crisp and golden served with sweet chilli sauce.",
+  "priceInCents" : 1400,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Crispy Squid",
+  "subtitle" : "Crispy squid sprinkle with sea salt pepper and mixed herbs, served with mild sweet chilli lime soy sauce.",
+  "priceInCents" : 1600,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Garlic Quail",
+  "subtitle" : "Marinated in garlic, black pepper and herbs then deep fried and served with sweet chilli sauce.",
+  "priceInCents" : 1800,
+  "category" : "entree",
+  "available" : true
+}
+{
+  "title" : "Mixed Entree (Serves 2)",
+  "subtitle" : "Hoy Jor, Satay, Vegetarian Spring Roll, Curry Puffs served with chefs selection of sauces.",
+  "priceInCents" : 2000,
+  "category" : "entree",
+  "available" : true
+}
+// soup
+{
+  "title" : "Tom Yum",
+  "subtitle" : "Spicy and sour soup with mushroom and fresh Thai herbs.",
+  "priceInCents" : 900,
+  "badge": "Spicy",
+  "category" : "soup",
+  "available" : true
+}
+{
+  "title" : "Tom Kah",
+  "subtitle" : "Spicy and sour soup with mushroom, fresh Thai herbs and coconut milk.",
+  "priceInCents" : 900,
+  "badge": "Spicy",
+  "category" : "soup",
+  "available" : true
+}
+// curry
+{
+  "title" : "Green Curry",
+  "subtitle" : "Spicy green curry, bamboo shoot, French bean, coconut milk and basil.",
+  "priceInCents" : 1800,
+  "badge": "Spicy",
+  "category" : "curry",
+  "available" : true
+}
+{
+  "title" : "Red Curry",
+  "subtitle" : "Spicy red curry, bamboo shoot, French bean, coconut milk and basil.",
+  "priceInCents" : 1800,
+  "badge": "Spicy",
+  "category" : "curry",
+  "available" : true
+}
+{
+  "title" : "Red Curry",
+  "subtitle" : "Spicy red curry, bamboo shoot, French bean, coconut milk and basil.",
+  "priceInCents" : 1800,
+  "category" : "curry",
+  "available" : true
+}
+{
+  "title" : "Panang Curry",
+  "subtitle" : "Lightly sweet red chilli curry with coconut milk and kaffir lime leaf served on steamed broccoli.",
+  "priceInCents" : 1800,
+  "category" : "curry",
+  "available" : true
+}
+{
+  "title" : "Red Curry Duck",
+  "subtitle" : "Sliced of roasted breast duck set in homemade red curry with pineapple, cherry tomato, basil and coconut milk.",
+  "priceInCents" : 2300,
+  "category" : "curry",
+  "available" : true
+}
+{
+  "title" : "Coco Prawn",
+  "subtitle" : "Fresh local king prawns set in aromic green curry, lightly flavoured with fresh young coconut granted flesh, served in fresh young coconut.",
+  "priceInCents" : 3200,
+  "category" : "curry",
+  "available" : true
+}
+{
+  "title" : "Roti Duck",
+  "subtitle" : "Red dried curry with roasted duck breast fillet, coconut milk, kaffir lime leaf served with crispy roti and cucumber salad sauce.",
+  "priceInCents" : 2500,
+  "category" : "curry",
+  "available" : true
+}
+// main
+{
+  "title" : "Pad Pak",
+  "subtitle" : "Stir fried mixed green vegetables with garlic and oyster sauce",
+  "priceInCents" : 1500,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Garlic Pepper",
+  "subtitle" : "Stir fried onion, spring onion, red capsicum, carrot with mixed garlic, black pepper, chili sauce.",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Basil",
+  "subtitle" : "Stir fried French beans, mushroom, capsicum, chilli blended and basil",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pra Rarm Pak",
+  "subtitle" : "Steamed vegetables and deep fried bean curd, topped with a special peanut sauce",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Thai",
+  "subtitle" : "Stir fried noodle with egg, bean curd, sprouts, fried onion and topped with crushed peanuts and fresh garlic chives",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad See Ew",
+  "subtitle" : "Stir fried flat noodle with Chinese broccoli, red capsicum, egg, garlic and mild soy sauce",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Taw Hu",
+  "subtitle" : "Stir fried bean curd with mixed vegetables and tasty mild soy sauce",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Yang Chicken",
+  "subtitle" : "Char grilled marinated chicken served with homemade sweet chili sauce",
+  "priceInCents" : 1800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Cashew Nut",
+  "subtitle" : "Stir fried with a sweet roasted curry paste, mushroom, cashew nut, onion and shallot",
+  "priceInCents" : 1900,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Bai Yok Stir",
+  "subtitle" : "Stir fried water chestnut, cashew nut, snow pea, carrot and red capsicum with mild oyster sauce",
+  "priceInCents" : 1900,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Som Wung Beef",
+  "subtitle" : "Slice tender beef marinated with fresh herbs and stir fried with water chestnut, served on steamed mix vegetables",
+  "priceInCents" : 1900,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Yang Beef",
+  "subtitle" : "Char grilled marinated grain fed rump served with special spicy lime, roasted rice relish",
+  "priceInCents" : 2000,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Beef Salad",
+  "subtitle" : "Sliced seared grain fed rump with lemongrass, cucumber, cherry tomato, red onion, coriander, mint and chili lime dressing",
+  "priceInCents" : 2000,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pa Low Beef",
+  "subtitle" : "Braised skin beef with star nice, cinnamon and fresh herbs topped with mint, coriander chili lime salad",
+  "priceInCents" : 2000,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pra Ram Grob",
+  "subtitle" : "Sliced sauteed grain fed rump with chili jam and peanut sauce served on tempura bok choy",
+  "priceInCents" : 2000,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Crackling Fish",
+  "subtitle" : "Stir fried ling fish fillet with long red chili basil and pork crackling, served bok choy",
+  "priceInCents" : 2000,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Spicy Crab",
+  "subtitle" : "Tempura soft shell crab with three flavors chili sauce, served with fresh mixed salad",
+  "priceInCents" : 2300,
+  "badge": "spicy",
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Ginger",
+  "subtitle" : "Stir fried with Asian celery, shredded ginger, black mushroom, onion and shallot",
+  "priceInCents" : 2300,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Turmeric Dory",
+  "subtitle" : "Crispy skin john dory fillet with turmeric, garlic, cashew nut, fried onion, basil topped with chilli jam tamarind relish",
+  "priceInCents" : 2300,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Yum Ped Tod",
+  "subtitle" : "Crispy breast duck with fresh Lebanese cucumber, coriander, betel leaf, mint, fried onion, crispy ginger and mild chili lime dressing",
+  "priceInCents" : 2400,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Pad Snow Pea",
+  "subtitle" : "Stir fried local king prawn with crisp snow peas, mushroom and tasty mild sauce",
+  "priceInCents" : 2800,
+  "category" : "main",
+  "available" : true
+}
+{
+  "title" : "Yum Hua Plee",
+  "subtitle" : "Fresh banana blossom tossed with local prawn cutlet, red onion, mint, chilli jam lime dressing, coconut milk and crispy fried onion",
+  "priceInCents" : 3100,
+  "category" : "main",
+  "available" : true
+}
+// rice
+{
+  "title" : "Fried Rice",
+  "subtitle" : "Fried rice Thai style fried rice with egg.",
+  "priceInCents" : 1300,
+  "category" : "rice",
+  "available" : true
+}
+{
+  "title" : "Boiled Rice (per serve)",
+  "subtitle" : "Thai jasmine rice.",
+  "priceInCents" : 350,
+  "category" : "rice",
+  "available" : true
+}
+{
+  "title" : "Steamed Mixed Red and Brown Rice (per serve)",
+  "subtitle" : "",
+  "priceInCents" : 700,
+  "category" : "rice",
+  "available" : true
+}
+{
+  "title" : "Steamed Rice Berry (Per Serve)",
+  "subtitle" : "",
+  "priceInCents" : 600,
+  "category" : "rice",
+  "available" : true
+}
+// drink
+{
+  "title" : "Coke",
+  "subtitle" : "375ml",
+  "priceInCents" : 300,
+  "category" : "drink",
+  "available" : true
+}
+{
+  "title" : "Diet Coke",
+  "subtitle" : "375ml",
+  "priceInCents" : 300,
+  "category" : "drink",
+  "available" : true
+}
+{
+  "title" : "Schweppes Lemonade",
+  "subtitle" : "",
+  "priceInCents" : 350,
+  "category" : "drink",
+  "available" : true
+}
+{
+  "title" : "Soda Water",
+  "subtitle" : "",
+  "priceInCents" : 350,
+  "category" : "drink",
+  "available" : true
+}
+{
+  "title" : "Tonic Water",
+  "subtitle" : "",
+  "priceInCents" : 350,
+  "category" : "drink",
+  "available" : true
+}
