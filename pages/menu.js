@@ -65,11 +65,11 @@ const Menu = ({}) => {
                         <div className='bg-white rounded border shadow-sm mb-4'>
                           {menuitems
                             .filter((item) => item.category === category)
-                            .sort((a, b) =>
-                              a.title.localeCompare(b.title, undefined, {
-                                sensitivity: 'accent'
-                              })
-                            )
+                            // .sort((a, b) =>
+                            //   a.title.localeCompare(b.title, undefined, {
+                            //     sensitivity: 'accent'
+                            //   })
+                            // )
                             .map((item) => (
                               <MenuItem key={item._id} item={item} />
                             ))}

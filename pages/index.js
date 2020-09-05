@@ -15,24 +15,30 @@ export default function Home() {
         </div>
         <Row className="mx-4">
           <Col sm={6} xs={12} className="my-4">
-            <h3 className='heading-tertiary u-margin-bottom-small'>
+            {/* <h3 className='heading-tertiary u-margin-bottom-small'>
               You're going to fall in love
-            </h3>
+            </h3> */}
             <p className='paragraph'>
-              Here at Bai Yok Modern Thai Cuisine in Castlecrag, we like to
-              think we’re doing something a little bit different with the Thai
-              canon. We look to traditional, but also try to provide something
-              contemporary.
+              Our first Bai Yok Thai Restaurant began its journey in 1988 at Crown Nest as family business run by Chan, Yoksri and me (Michael).
+              Bai Yok is named after Yoksri, who is my dear sister and the creator of all the recipes.
+              Yok means 'Jade' in English.
             </p>
-            <h3 className='heading-tertiary u-margin-bottom-small'>
+            {/* <h3 className='heading-tertiary u-margin-bottom-small'>
               Come and enjoy the best Thai food in Sydney.
-            </h3>
+            </h3> */}
             <p className='paragraph'>
-              we combine spring rolls, classic soups, red and green curries and
-              duck dishes with house favourites like Hoy Jor – crab, prawn, pork
-              and water chestnut wrapped in soya paper and served with plum
-              sauce – and Yum Ped Tod, duck with Lebanese cucumber, betel leaf
-              and chilli lime dressing.
+              In 2001, our family established Bai Yok Castlecrag with an aim to become part of the Castlecrag community.
+              Since then we have been creating quality authentic Thai food, just as we would do for our own family.
+              We can always recall our opening night and especially the first couple that stepped into our restaurant,
+              They have not just become our regular customer, but also part of our extended Castlecrag family.
+            </p>
+            <p className='paragraph'>
+              Due to the community support and patronage, Bai Yok Castlecrag has now been operating over 19 years.
+              We appreciate the community that see us as the go to "dining venue" and will continue to deliver exciting,
+              quality authentic Thai cuisine at Bai Yok Castlecrag.
+            </p>
+            <p className='paragraph'>
+              Thank so much for your continuing support. <br/>Michael Lui and Family
             </p>
             <Link href='/menu'>
               <a className='btn-text'>See our meals &rarr;</a>
