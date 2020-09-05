@@ -27,7 +27,7 @@ const NavPage = () => {
         id='site-navbar'>
         <Container>
           <Navbar.Brand to='/'>
-            <Nav.Link eventKey={0} as={Link} activeclassname='active' href='#'>
+            <Nav.Link eventKey={0} as={Link} activeclassname='active' href='/'>
               <Image
                 src='/Logo-Baiyok-small.png'
                 alt=''
