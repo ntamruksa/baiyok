@@ -247,6 +247,7 @@ export default function Book() {
                 type='text'
                 onChange={handleInputChange}
                 value={firstName}
+                required
               />
             </Form.Group>
             <Form.Group
@@ -267,6 +268,7 @@ export default function Book() {
                 type='number'
                 onChange={handleInputChange}
                 value={phone}
+                required
               />
             </Form.Group>
             <Form.Group
