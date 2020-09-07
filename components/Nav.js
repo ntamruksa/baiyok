@@ -54,6 +54,9 @@ const NavPage = () => {
               <Link href='/menu' passHref>
                 <Nav.Link activeclassname='active'>Menu</Nav.Link>
               </Link>
+              <Link href='/book' passHref>
+                <Nav.Link activeclassname='active'>Reservation</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

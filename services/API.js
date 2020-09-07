@@ -11,6 +11,16 @@ const getMenuItems = () => {
   return client.get(`/api/menuitems`).then((res) => res.data)
 }
 
+const addBooking = (reservation) => {
+  return client.post('/api/addBooking', { reservation }).then((res) => res.data)
+}
+
+const checkin = (checkin) => {
+  return client.post('/api/checkin', { checkin }).then((res) => res.data)
+}
+
 export default {
-  getMenuItems
+  getMenuItems,
+  addBooking,
+  checkin
 }

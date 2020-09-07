@@ -1,6 +1,7 @@
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import api from '../services/API'
 
 // import styles from '../styles/Home.module.css'
 
@@ -36,14 +37,21 @@ export default function Covid() {
       method: 'post',
       body: JSON.stringify(payload)
     }).then((res) => {
-      localStorage.setItem('covidEmail', email);
-      localStorage.setItem('covidFirstName', firstName);
-      localStorage.setItem('covidLastName', lastName);
-      localStorage.setItem('covidPhone', phone);
-      router.push('/thankyou')
+      api.checkin(data).then((res) => {
+        localStorage.setItem('covidEmail', email);
+        localStorage.setItem('covidFirstName', firstName);
+        localStorage.setItem('covidLastName', lastName);
+        localStorage.setItem('covidPhone', phone);
+        router.push('/thankyou')
+      }).catch((err) => {
+        console.error(err)
+        router.push('/thankyou')
+      })
+
     })
   }
   return (
+    <Container>
     <section className='section-covid'>
       <div className='u-center-text u-margin-bottom-med'>
         <h2 className='heading-secondary u-margin-bottom-small'>
@@ -126,5 +134,6 @@ export default function Covid() {
         </Form>
       </div>
     </section>
+    </Container>
   )
 }

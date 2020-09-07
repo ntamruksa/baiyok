@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 // import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <>
+    <Container>
       <section className='section section-hero' />
       <section className='section section-aboutus'>
         <div className='u-center-text u-margin-bottom-med'>
@@ -65,6 +65,6 @@ export default function Home() {
           </Col>
         </Row>
       </section>
-    </>
+    </Container>
   )
 }
