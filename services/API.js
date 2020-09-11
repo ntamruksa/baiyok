@@ -15,6 +15,10 @@ const addBooking = (reservation) => {
   return client.post('/api/addBooking', { reservation }).then((res) => res.data)
 }
 
+const getBooking = (bookingId) => {
+  return client.get(`/api/getBooking?bookingId=${bookingId}`).then((res) => res.data)
+}
+
 const checkin = (checkin) => {
   return client.post('/api/checkin', { checkin }).then((res) => res.data)
 }
@@ -22,5 +26,6 @@ const checkin = (checkin) => {
 export default {
   getMenuItems,
   addBooking,
-  checkin
+  checkin,
+  getBooking
 }

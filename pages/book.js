@@ -105,7 +105,7 @@ export default function Book() {
       api.addBooking(reservation).then((bookingRes) => {
         setIsValid(true)
         setIsLoading(false)
-        router.push({pathname: '/thankyou-booking', query: { confirm: text}})
+        router.push({pathname: '/thankyou-booking', query: { bookingId: bookingRes.insertedId }})
       }).catch((err) => {
         console.error(err)
         setErrorMessage(err.message)
