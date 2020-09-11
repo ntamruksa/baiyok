@@ -29,9 +29,10 @@ const ThankyouBooking = withRouter(
             <h2 className='heading-secondary u-margin-bottom-small'>
               Thank you for booking.
             </h2>
-            <p className='paragraph-main px-4'>
+            <p className='paragraph-main px-4 mb-0'>
               Your reservation details is:
             </p>
+            <p>** For same day booking on Friday and Saturday please wait for our call to confirm your booking **</p>
             <Row>
               <Col className='text-right px-0'>Name:</Col>
               <Col className='text-left'>{`${reservation.firstName} ${reservation.lastName}`}</Col>
