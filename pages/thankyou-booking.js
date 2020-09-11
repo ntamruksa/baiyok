@@ -57,7 +57,7 @@ const ThankyouBooking = withRouter(
               If any change please contact us on <br />
               <a href='tel:99673433'>9967 3433</a> or{' '}
               <a href='tel:99673411'>9967 3411</a>. <br />
-              We are looking forward to see you
+              We are looking forward to seeing you.
             </p>
             <Link href='/menu'>
               <a className='btn-text'>See our meals &rarr;</a>

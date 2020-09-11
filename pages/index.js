@@ -7,6 +7,8 @@ export default function Home() {
   return (
     <Container>
       <section className='section section-hero' />
+      <section className='section section-meals' >
+      </section>
       <section className='section section-aboutus'>
         <div className='u-center-text u-margin-bottom-med'>
           <h2 className='heading-secondary mx-4'>
