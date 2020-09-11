@@ -142,8 +142,8 @@ export default function Book() {
     switch (h) {
       case 17:
         return currentHourRestrictedMinutes
-      case currentHour:
-        return currentHourRestrictedMinutes
+      // case currentHour:
+      //   return currentHourRestrictedMinutes
       default:
         return []
     }
@@ -172,10 +172,10 @@ export default function Book() {
       22,
       23
     ]
-    const now = moment().format('HH')
-    for (let i = 0; i < parseInt(now); i++) {
-      if (!hours.includes(i)) hours.push(i)
-    }
+    // const now = moment().format('HH')
+    // for (let i = 0; i < parseInt(now); i++) {
+    //   if (!hours.includes(i)) hours.push(i)
+    // }
     return hours
   }
   return (

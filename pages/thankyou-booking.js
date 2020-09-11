@@ -1,5 +1,6 @@
 import { withRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Container, Row, Col } from 'react-bootstrap'
 import api from '../services/API'
 
@@ -57,6 +58,9 @@ const ThankyouBooking = withRouter(
               <a href='tel:99673411'>9967 3411</a>. <br />
               We are looking forward to see you
             </p>
+            <Link href='/menu'>
+              <a className='btn-text'>See our meals &rarr;</a>
+            </Link>
           </div>
         </section>
       </Container>
