@@ -1,4 +1,4 @@
-import { Form, Button, Container, FormControl } from 'react-bootstrap'
+import { Form, Button, Container, FormControl, ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import TimePicker from 'rc-time-picker'
@@ -22,36 +22,56 @@ export default function Book() {
   const [note, setNote] = useState(undefined)
   const [isValid, setIsValid] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-
+  const [blockedTimeList, setBlockedTimeList] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
-
+  const timeList = [
+    { id: 530, label: '5:30 pm' },
+    { id: 545, label: '5:45 pm' },
+    { id: 600, label: '6:00 pm' },
+    { id: 615, label: '6:15 pm' },
+    { id: 630, label: '6:30 pm' },
+    { id: 645, label: '6:45 pm' },
+    { id: 700, label: '7:00 pm' },
+    { id: 715, label: '7:15 pm' },
+    { id: 730, label: '7:30 pm' },
+    { id: 745, label: '7:45 pm' },
+    { id: 800, label: '8:00 pm' },
+    { id: 815, label: '8:15 pm' },
+    { id: 830, label: '8:30 pm' },
+    { id: 845, label: '8:45 pm' },
+    { id: 900, label: '9:00 pm' },
+    { id: 915, label: '9:15 pm' },
+    { id: 930, label: '9:30 pm' }
+  ]
   useEffect(() => {
-    const validPhoneNumber = (n) => (n.toString().length === 10 && n.toString().substring(0, 2) === '04')
+    const validPhoneNumber = (n) =>
+      n.toString().length === 10 && n.toString().substring(0, 2) === '04'
     if (date === null) {
       setIsValid(false)
-      setErrorMessage(
-        'Please select date'
-      )
+      setErrorMessage('Please select date')
     } else if (time === null) {
       setIsValid(false)
-      setErrorMessage(
-        'Please select time'
-      )
+      setErrorMessage('Please select time')
     } else if (!firstName) {
       setIsValid(false)
-      setErrorMessage(
-        'First Name is required'
-      )
+      setErrorMessage('First Name is required')
     } else if (!phone || !validPhoneNumber(phone)) {
       setIsValid(false)
-      setErrorMessage(
-        'Valid Phone Number is Required'
-      )
+      setErrorMessage('Valid Phone Number is Required')
     } else {
       setIsValid(true)
       setErrorMessage('')
     }
   }, [phone, date, time, firstName])
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await api.getBookingSetup(date)
+      setBlockedTimeList(response)
+    }
+    fetchData()
+
+  }, [date])
 
   const handleInputChange = (e) => {
     const value = e.target.value
@@ -71,6 +91,10 @@ export default function Book() {
       setNote(value)
     }
   }
+  const handleTimeChange = (e) => {
+    setTime(e.target.value)
+  }
+
   const handleDateChange = (e, { disabled }) => {
     setDate(e)
     setTime(null)
@@ -88,12 +112,14 @@ export default function Book() {
       optIn,
       party,
       date: moment(date).format('ddd DD MMM YYYY'),
-      time: time.format('hh:mm A'),
+      time,
       note
     }
     const text = `${party} persons on ${moment(date).format(
       'ddd DD MMM YYYY'
-    )} ${time.format('hh:mm A')} Name: ${firstName} ${lastName} Phone: <tel:${phone}> ${note ? ', Special request: ' + note : ''}`
+    )} ${time} Name: ${firstName} ${lastName} Phone: <tel:${phone}> ${
+      note ? ', Special request: ' + note : ''
+    }`
     const payload = {
       text,
       channel: 'baiyok-reservation'
@@ -101,23 +127,31 @@ export default function Book() {
     fetch(process.env.NEXT_PUBLIC_SLACK_HOOK_URL, {
       method: 'post',
       body: JSON.stringify(payload)
-    }).then((res) => {
-      api.addBooking(reservation).then((bookingRes) => {
-        setIsValid(true)
-        setIsLoading(false)
-        router.push({pathname: '/thankyou-booking', query: { bookingId: bookingRes.insertedId }})
-      }).catch((err) => {
+    })
+      .then((res) => {
+        api
+          .addBooking(reservation)
+          .then((bookingRes) => {
+            setIsValid(true)
+            setIsLoading(false)
+            router.push({
+              pathname: '/thankyou-booking',
+              query: { bookingId: bookingRes.insertedId }
+            })
+          })
+          .catch((err) => {
+            console.error(err)
+            setErrorMessage(err.message)
+            setIsLoading(false)
+            setIsValid(true)
+          })
+      })
+      .catch((err) => {
         console.error(err)
         setErrorMessage(err.message)
         setIsLoading(false)
         setIsValid(true)
       })
-    }).catch((err) => {
-      console.error(err)
-      setErrorMessage(err.message)
-      setIsLoading(false)
-      setIsValid(true)
-    })
   }
   const monday = {
     daysOfWeek: [1]
@@ -181,8 +215,8 @@ export default function Book() {
   return (
     <Container>
       <section className='section-book'>
-        <div className='u-center-text u-margin-bottom-med'>
-          <h2 className='heading-secondary u-margin-bottom-small'>
+        <div className='u-center-text u-margin-bottom-small'>
+          <h2 className='heading-secondary'>
             Book a table
           </h2>
         </div>
@@ -219,7 +253,7 @@ export default function Book() {
                 disabledDays={[monday, past]}
               />
             </Form.Group>
-            {showTime && (
+            {/* {showTime && (
               <Form.Group>
                 <Form.Label>
                   Select time for {moment(date).format('DD MMM YYYY')}
@@ -236,6 +270,18 @@ export default function Book() {
                   disabledMinutes={disabledMinutes}
                   minuteStep={15}
                 />
+              </Form.Group>
+            )} */}
+            {showTime && (
+              <Form.Group>
+                <Form.Label>
+                  Select time for {moment(date).format('DD MMM YYYY')}
+                </Form.Label>
+                <ToggleButtonGroup size="lg" className="m-2 flex-wrap" name="time" >
+                  {timeList.map(t => (
+                    <ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" onClick={handleTimeChange} value={t.label} key={t.label}>{t.label}</ToggleButton>
+                  ))}
+                </ToggleButtonGroup>
               </Form.Group>
             )}
             <Form.Group
@@ -282,9 +328,7 @@ export default function Book() {
                 value={email}
               />
             </Form.Group>
-            <Form.Group
-              controlId='formNote'
-              className='u-margin-bottom-med'>
+            <Form.Group controlId='formNote' className='u-margin-bottom-med'>
               <Form.Label>Special Request</Form.Label>
               <Form.Control
                 className='paragraph-secondary'
@@ -304,10 +348,10 @@ export default function Book() {
               />
             </Form.Group>
             {errorMessage && (
-                    <div className="mt-4 alert alert-danger" role="alert">
-                      {errorMessage}
-                    </div>
-                  )}
+              <div className='mt-4 alert alert-danger' role='alert'>
+                {errorMessage}
+              </div>
+            )}
             <Button
               className='btn-lg'
               variant='outline-secondary'

@@ -23,9 +23,14 @@ const checkin = (checkin) => {
   return client.post('/api/checkin', { checkin }).then((res) => res.data)
 }
 
+const getBookingSetup = (date) => {
+  return client.get(`/api/getBookingSetup?date=${date}`).then((res) => res.data)
+}
+
 export default {
   getMenuItems,
   addBooking,
   checkin,
-  getBooking
+  getBooking,
+  getBookingSetup
 }

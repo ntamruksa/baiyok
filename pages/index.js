@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Row, Col, Container, Carousel } from 'react-bootstrap'
+import ContactCard from '../components/home/ContactCard'
 // import styles from '../styles/Home.module.css'
 
 export default function Home() {

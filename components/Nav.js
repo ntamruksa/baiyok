@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import {
-  Navbar,
-  Nav,
-  Container,
-  Image,
-} from 'react-bootstrap'
+import { Navbar, Nav, Container, Image } from 'react-bootstrap'
 import Icon from './common/FontAwesome'
 import { getCart } from '../services/cart'
 
@@ -56,7 +51,10 @@ const NavPage = () => {
               </Link>
               <Link href='/book' passHref>
                 <Nav.Link activeclassname='active'>Reservation</Nav.Link>
-              </Link>
+              </Link>{' '}
+              <a target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine'>
+                <Nav.Link activeclassname='active' target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine' >Menulog Order</Nav.Link>
+              </a>
             </Nav>
           </Navbar.Collapse>
         </Container>
