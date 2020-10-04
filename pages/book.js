@@ -1,10 +1,10 @@
 import { Form, Button, Container, FormControl, ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import TimePicker from 'rc-time-picker'
-import 'rc-time-picker/assets/index.css'
+// import TimePicker from 'rc-time-picker'
+// import 'rc-time-picker/assets/index.css'
 import DayPicker, { DateUtils } from 'react-day-picker'
-import 'react-day-picker/lib/style.css'
+// import 'react-day-picker/lib/style.css'
 import moment from 'moment'
 import api from '../services/API'
 
