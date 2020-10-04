@@ -96,3 +96,32 @@
 .section-carousel {
   opacity: .85;
 }
+
+.section-contactus {
+    background-color: $color-grey-dark-3;
+    padding: 5rem 5rem;
+    font-size: 1.4rem;
+    color: $color-grey-dark;
+    text-align: center;
+    &__title {
+      padding-top: 2rem;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+    &__details {
+      padding: 2rem;
+    }
+    &__box {
+      &:not(:last-child) {
+        border-right: 1px solid $color-grey-dark;
+        @include respond(phone) {
+          border-bottom: 1px solid $color-grey-dark;
+          border-right: none;
+        }
+        @include respond(tab-port) {
+          border-bottom: 1px solid $color-grey-dark;
+          border-right: none;
+        }
+      }
+    }
+}

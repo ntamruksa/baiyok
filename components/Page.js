@@ -11,7 +11,7 @@ class Page extends Component {
         <Meta />
         <Header />
         <div style={{ marginTop: '60px' }}>{this.props.children}</div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     )
   }

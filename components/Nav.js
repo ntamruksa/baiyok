@@ -55,6 +55,9 @@ const NavPage = () => {
               <a target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine'>
                 <Nav.Link activeclassname='active' target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine' >Menulog Order</Nav.Link>
               </a>
+              <Link href='/#section-contactus' passHref>
+                <Nav.Link activeclassname='active'>Contact</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

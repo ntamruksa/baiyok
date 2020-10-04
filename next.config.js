@@ -1,5 +1,8 @@
 const withSass = require('@zeit/next-sass')
 const withCSS = require('@zeit/next-css')
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/
+});
 
 module.exports = withCSS(withSass({
   webpack (config, options) {
@@ -16,3 +19,7 @@ module.exports = withCSS(withSass({
     return config
   }
 }))
+
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "md", "mdx"]
+})
