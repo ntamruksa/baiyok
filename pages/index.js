@@ -102,7 +102,7 @@ export default function Home() {
         </section>
       </Container>
       <section className='section-contactus' name="section-contactus">
-        <div className='u-center-text u-margin-bottom-med'>
+        <div className='u-center-text u-margin-bottom-small'>
           <h2 className='heading-secondary mx-4'>Contact us</h2>
         </div>
         <Row className='align-items-top'>

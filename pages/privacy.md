@@ -3,16 +3,16 @@ import { Container } from 'react-bootstrap'
 <Container className='markdown'>
 
 ## Introduction
-This site is owned and published by YOK THAI PTY. LIMITED (ABN: 15 096 590 751) trading as “BAI YOK MODERN THAI CUISINE” (referred to as “Bai Yok Thai Restaurant”, “we”, “us” and “our”). Our Privacy Policy sets out the ways in which we collect, use, disclose and protect any personal information that you provide to us. It serves as an expression of our commitment to protecting your personal information, but is not a contract between you and us.
+This site is owned and published by YOK THAI PTY. LIMITED (ABN: 15 096 590 751) trading as “BAI YOK MODERN THAI CUISINE” (referred to as “Bai Yok”, “we”, “us” and “our”). Our Privacy Policy sets out the ways in which we collect, use, disclose and protect any personal information that you provide to us. It serves as an expression of our commitment to protecting your personal information, but is not a contract between you and us.
 
 ## Policy Statement
 We strive to protect the personal information of our stakeholders including but not limited to our members (including potential members), sponsors, customers (including potential customers), applicants for employment, former employees, contractors (including potential contractors) (collectively “Stakeholders”). The Privacy Act 1988 (Cth) (“Act”) governs the way we collect, use, disclose and store our Stakeholders’ personal information. This Privacy Policy describes how we aim to adhere to the principles contained within the Act.
 We collect, store and use personal information in order to:
-* facilitate your membership of any of the Company’s venues;
-* facilitate take away order;
-* allow you to share feedback with the Company;
-* allow the Company to provide you with relevant information regarding the Company’s business and offers,
-* perform any other duty required to effectively operate and manage the business of the Company;
+* facilitate your reservation of any of Bai Yok's venues;
+* facilitate information capture for covid-19 restaurant regulation;
+* allow you to share feedback with Bai Yok;
+* allow Bai Yok to provide you with relevant information regarding the Bai Yok’s business and offers,
+* perform any other duty required to effectively operate and manage the business of the Bai Yok;
 * collectively, the “Purposes”.
 
 ## Policy Application
@@ -61,7 +61,7 @@ The Personal Information that we collect from you may be transferred to, and sto
 If you wish to correct or remove any of the details you have submitted to us, you may do so by updating your Personal Information or by contacting us via the details listed below. Our security procedures mean that we may request proof of identity before we reveal Personal Information. We will take reasonable steps to ensure at all times that the Personal Information we keep about Stakeholders is accurate, complete and up to date. In order to achieve this, we may monitor your Personal Information and will update our database when you inform us of any change to your details. You have the right to request corrections of any inaccurate information. If you request to see what Personal Information we hold about you, we will grant access unless we consider there is reasonable grounds to refuse, for example, where that disclosure would unreasonably interfere with the privacy of another individual.
 
 (i) Contact details
-You may direct any questions or concerns that you have regarding this Privacy Policy to: Michael Lui baiyokcastlecrag@gmail.com We will respond to you as soon as possible.
+You may at any time, request that we amend or delete your personal information from our database and you may direct any questions or concerns that you have regarding this Privacy Policy to: Michael Lui baiyokcastlecrag@gmail.com We will respond to you as soon as possible.
 
 (j) Privacy Policy Amendment
 We reserve the right to amend this Privacy Policy at any time and will publish all amendments on the Website.

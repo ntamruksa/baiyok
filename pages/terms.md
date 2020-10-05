@@ -19,6 +19,10 @@ These terms and conditions ("Terms") apply to any person who uses, accesses, ref
 
 * TBA
 
+### Reservation
+
+Due to current restrictions of restaurant capacity, A credit card Booking Guarantee of $35.00 per person is required. Nothing will be debited from your card when making the booking, however, if you cancel within 12 hours of your booking or don't show up, a cancellation fee per person will be taken as specified.
+
 ### GST
 
 * The prices quoted are inclusive of all applicable GST charges.
@@ -33,7 +37,7 @@ These terms and conditions ("Terms") apply to any person who uses, accesses, ref
 ### Refund Policy
 
 * Bai Yok Thai Restaurant will always try to accommodate change in orders. Bai Yok Thai Restaurant require a minimum of 30 minutes notice before the order pickup time.
-* Your online catering order is considered “confirmed” once the payment has been made successfully.
+* Your online order is considered “confirmed” once the payment has been made successfully.
 * Once the food is prepared, we will not be able to refund your purchase.
 * Cancellation charges may apply where costs have been incurred in regards to food, labour or other services.
 
