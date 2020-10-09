@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { Badge, Button, Media } from 'react-bootstrap'
+import { Badge, Button, Media, Row, Col } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 // import EditMenuItemModal from '../modals/EditMenuItemModal'
 // import EditBurgerModal from '../modals/EditBurgerModal'
-// import EditDrinkModal from '../modals/EditDrinkModal'
+import MenuModal from '../modal/MenuModal'
 
 const MenuItem = ({ item = null }) => {
   // const [showEditMenu, setShowEditMenu] = useState(false)
   // const [showBurgerMenu, setShowBurgerMenu] = useState(false)
-  // const [showDrinkMenu, setShowDrinkMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   // const hideEditMenu = () => {
   //   setShowEditMenu(false)
@@ -16,55 +16,45 @@ const MenuItem = ({ item = null }) => {
   // const hideBurgerMenu = () => {
   //   setShowBurgerMenu(false)
   // }
-  // const hideDrinkMenu = () => {
-  //   setShowDrinkMenu(false)
-  // }
+  const hideMenu = () => {
+    setShowMenu(false)
+  }
 
   return (
     <>
       {/* {showEditMenu && <EditMenuItemModal show={showEditMenu} onHide={hideEditMenu} item={item} />}
-      {showBurgerMenu && <EditBurgerModal show={showBurgerMenu} onHide={hideBurgerMenu} item={item} />}
-      {showDrinkMenu && <EditDrinkModal show={showDrinkMenu} onHide={hideDrinkMenu} item={item} />} */}
-      <div className="p-3 border-bottom gold-members">
+      {showBurgerMenu && <EditBurgerModal show={showBurgerMenu} onHide={hideBurgerMenu} item={item} />}*/}
+      {showMenu && <MenuModal show={showMenu} onHide={hideMenu} item={item} />}
+      <div className='p-3 border-bottom gold-members' onClick={() => setShowMenu(true)}>
         {/* todo don't use float-right... use flex insteead */}
-        <span className="float-right">
-          {item.available ? (
-            <Button
-              className="btn-medium ml-2"
-              variant="outline-secondary"
-              // onClick={() => {
-              //   item.category.includes('burger')
-              //     ? setShowBurgerMenu(true)
-              //     : item.category.includes('sandwich')
-              //       ? setShowEditMenu(true)
-              //       : setShowDrinkMenu(true)
-              // }}
-            >
-              ${(item.priceInCents / 100).toFixed(2)}
-            </Button>
-          ) : (
-            <Button variant="outline-danger" className="btn-medium text-uppercase no-pointer ml-2" disabled>
-                Sold Out
-            </Button>
-          )}
-        </span>
-        <Media>
-          <Media.Body>
-            <h4 className="mb-2 text-capitalize">
-              <strong>{item.title}</strong>
-              {item.badge && (
-                <Badge variant="danger" className="ml-2 text-capitalize">
-                  {item.badge}
-                </Badge>
-              )}
-            </h4>
-            <p className="text-gray mb-0">
-              {item.subtitle &&
-              (item.subtitle.charAt(item.subtitle.length - 1) === '.' ? item.subtitle.substring(0, item.subtitle.length - 1) : item.subtitle)}
-            </p>
-            {/* <p className="mb-0">${(item.priceInCents / 100).toFixed(2)}</p> */}
-          </Media.Body>
-        </Media>
+        <Row>
+          <Col sm={10} xs={8}>
+            <Media>
+              <Media.Body>
+                <h4 className='mb-2 text-capitalize'>
+                  <strong>{item.title}</strong>
+                  {item.badge && (
+                    <Badge variant='danger' className='ml-2 text-capitalize'>
+                      {item.badge}
+                    </Badge>
+                  )}
+                </h4>
+                <p className='text-gray mb-0'>
+                  {item.subtitle &&
+                    (item.subtitle.charAt(item.subtitle.length - 1) === '.'
+                      ? item.subtitle.substring(0, item.subtitle.length - 1)
+                      : item.subtitle)}
+                </p>
+                <p className='mb-0'>${(item.priceInCents / 100).toFixed(2)}</p>
+              </Media.Body>
+            </Media>
+          </Col>
+          <Col>
+            <div>
+              {item.image && <img src={item.image} alt='Upload Preview' />}
+            </div>
+          </Col>
+        </Row>
       </div>
     </>
   )
