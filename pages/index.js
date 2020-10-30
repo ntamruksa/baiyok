@@ -38,7 +38,7 @@ export default function Home() {
         <section className='section section-aboutus'>
           <div className='u-center-text u-margin-bottom-med'>
             <h2 className='heading-secondary mx-4'>
-              Welcome to Bai Yok Modern Thai Cousine
+              Welcome to Bai Yok Modern Thai Cuisine
             </h2>
           </div>
           <Row className='mx-4'>
@@ -109,7 +109,7 @@ export default function Home() {
           <Col md={4} xs={12} className='section-contactus__box'>
             <div className='section-contactus__title'>address</div>
             <div className='section-contactus__details'>
-              Shop2A, 122 Edinburgh Rd. Castlecrag, NSW 2068
+            <a href='https://goo.gl/maps/SnQJeD8DLKfT5syT8'>Shop2A, 122 Edinburgh Rd. Castlecrag, NSW 2068</a>
             </div>
           </Col>
           <Col md={4} xs={12} className='section-contactus__box'>

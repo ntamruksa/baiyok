@@ -22,7 +22,7 @@ export default function Book() {
   const [note, setNote] = useState(undefined)
   const [isValid, setIsValid] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [blockedTimeList, setBlockedTimeList] = useState([])
+  const [blockedTimeList, setBlockedTimeList] = useState({blockedTime: [], isDateBlocked: false})
   const [errorMessage, setErrorMessage] = useState(null)
   const timeList = [
     { id: 530, label: '5:30 pm' },
@@ -66,8 +66,8 @@ export default function Book() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await api.getBookingSetup(date)
-      setBlockedTimeList(response)
+      const {blockedTime, isDateBlocked} = await api.getBookingSetup(moment(date).format('DD-MM-yyyy'))
+      setBlockedTimeList({blockedTime, isDateBlocked})
     }
     fetchData()
 
@@ -278,9 +278,19 @@ export default function Book() {
                   Select time for {moment(date).format('DD MMM YYYY')}
                 </Form.Label>
                 <ToggleButtonGroup size="lg" className="m-2 flex-wrap" name="time" >
-                  {timeList.map(t => (
-                    <ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" onClick={handleTimeChange} value={t.label} key={t.label}>{t.label}</ToggleButton>
-                  ))}
+                  {timeList.map(t => {
+                    if (blockedTimeList.isDateBlocked)
+                    {
+                      return (<ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" disabled value={t.label} key={t.label}>{t.label}</ToggleButton>)
+                    } else if (blockedTimeList.blockedTime && blockedTimeList.blockedTime.includes(t.id)) {
+                      return (<ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" disabled value={t.label} key={t.label}>{t.label}</ToggleButton>)
+                    } else {
+                      return (
+                        <ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" onClick={handleTimeChange} value={t.label} key={t.label}>{t.label}</ToggleButton>
+                      )
+                    }
+
+                  })}
                 </ToggleButtonGroup>
               </Form.Group>
             )}
