@@ -115,7 +115,7 @@ export default function Home() {
           <Col md={4} xs={12} className='section-contactus__box'>
             <div className='section-contactus__title'>Phone + Email</div>
             <div className='section-contactus__details'>
-              (02) 9967 3433, (02) 9967 3411 <a href='mailto:baiyokcastlecrag@gmail.com'>baiyokcastlecrag@gmail.com</a>
+            <a href="tel:0299673433">(02) 9967 3433</a>, <a href="tel:0299673411">(02) 9967 3411</a> <a href='mailto:baiyokcastlecrag@gmail.com'>baiyokcastlecrag@gmail.com</a>
             </div>
           </Col>
           <Col md={4} xs={12} className='section-contactus__box'>
