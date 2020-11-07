@@ -38,7 +38,7 @@ const MenuModal = ({ show, onHide, item }) => {
             <div className="menu-modal-option-body">
             {item.options.map((option, index) => (
               <Row className="py-2" key={index}>
-                <Col sm={10} className="menu-modal-option-body-title">
+                <Col sm={8} className="menu-modal-option-body-title">
                 <Form.Check
                   type="radio"
                   label={option.title}
