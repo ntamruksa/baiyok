@@ -37,15 +37,15 @@
 }
 .form-check-label {
   width: 100%;
+  padding-right: 0 !important;
 }
 .menu-modal-option-body {
   padding: 2rem;
   &-title {
-    &-inner {
-      width: 100%;
-    }
+    padding-right: 0;
   }
   &-price {
     text-align: right;
+    padding-left: 0;
   }
 }

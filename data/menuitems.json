@@ -142,7 +142,9 @@
   "categoryOrder" : 3,
   "options" : [
     {"title": "Vegetable and Bean Curd", "priceInCents" : 0},
-    {"title": "Chicken or Beef", "priceInCents" : 0}
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0}
+
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602304231/baiyok/fmokzcjlnhdchmhwlzow.jpg"
 }
@@ -157,7 +159,8 @@
   "categoryOrder" : 3,
   "options" : [
     {"title": "Vegetable and Bean Curd", "priceInCents" : 0},
-    {"title": "Chicken or Beef", "priceInCents" : 0}
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602304750/baiyok/ne5hft7cd5wprig9syjm.jpg"
 }
@@ -170,7 +173,8 @@
   "itemOrder" : 3,
   "categoryOrder" : 3,
   "options" : [
-    {"title": "Chicken or Beef", "priceInCents" : 0}
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602304430/baiyok/bguxcepahvnaqfysbih2.jpg"
 }
@@ -303,7 +307,8 @@
   "itemOrder" : 16,
   "categoryOrder" : 4,
   "options" : [
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 1000}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602303782/baiyok/oaa9lxwnori4epwgrrjm.jpg"
@@ -318,7 +323,8 @@
   "categoryOrder" : 4,
   "options" : [
     {"title": "Vegetable and Bean Curd", "priceInCents" : 0},
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 1000}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602302739/baiyok/xqhyxjy7izli8izygoou.jpg"
@@ -333,7 +339,8 @@
   "categoryOrder" : 4,
   "options" : [
     {"title": "Vegetable and Bean Curd", "priceInCents" : 0},
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 1000}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602303045/baiyok/fgg80t4a5mkoobiulzji.jpg"
@@ -347,7 +354,8 @@
   "itemOrder" : 19,
   "categoryOrder" : 4,
   "options" : [
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Seafood", "priceInCents" : 600}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602305689/baiyok/ukh4g6y40q4arz2pvbu6.jpg"
@@ -435,7 +443,8 @@
   "itemOrder" : 27,
   "categoryOrder" : 4,
   "options" : [
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 1000}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602301656/baiyok/rmopdbtbwsk2v9uvivst.jpg"
@@ -449,7 +458,8 @@
   "itemOrder" : 28,
   "categoryOrder" : 4,
   "options" : [
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 1000}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602301754/baiyok/srhvthvc4vqmymbski0r.jpg"
@@ -459,7 +469,8 @@
   "subtitle" : "Fried rice Thai style fried rice with egg.",
   "priceInCents" : 1500,
   "options" : [
-    {"title": "Chicken or Beef", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
+    {"title": "Beef", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 1300}
   ],
   "category" : "rice",

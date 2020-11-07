@@ -38,16 +38,16 @@ const MenuModal = ({ show, onHide, item }) => {
             <div className="menu-modal-option-body">
             {item.options.map((option, index) => (
               <Row className="py-2" key={index}>
-                <Col className="menu-modal-option-body-title">
-                <Form.Check
-                  type="radio"
-                  label={option.title}
-                  name="menuOption"
-                  key={index}
-                  id={`menuOption-${index}`}
-                  className="menu-modal-option-body-title-inner"
-                  onClick={() => selectOption(index)}
-                />
+                <Col className="menu-modal-option-body-title col-auto">
+                  <Form.Check
+                    type="radio"
+                    label={option.title}
+                    name="menuOption"
+                    key={index}
+                    id={`menuOption-${index}`}
+                    className="menu-modal-option-body-title-inner"
+                    onClick={() => selectOption(index)}
+                  />
                 </Col>
                 <Col className="menu-modal-option-body-price">
                   +${(option.priceInCents / 100).toFixed(2)}
