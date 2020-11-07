@@ -62,7 +62,9 @@ const Menu = ({}) => {
                     </Accordion.Toggle>
 
                     <Accordion.Collapse eventKey={title} show>
-                      <div className='bg-white rounded border shadow-sm mb-4'>
+                      {/* <div className='bg-white rounded border shadow-sm mb-4'> */}
+                      <Row>
+
                         {menuitems
                           .filter((item) => item.category === category)
                           // .sort((a, b) =>
@@ -71,9 +73,12 @@ const Menu = ({}) => {
                           //   })
                           // )
                           .map((item) => (
-                            <MenuItem key={item._id} item={item} />
+                              <Col md={4} sm={6} xs={12} className='d-flex flex-grow-1'>
+                              <MenuItem key={item._id} item={item} />
+                              </Col>
                           ))}
-                      </div>
+                          </Row>
+                      {/* </div> */}
                     </Accordion.Collapse>
                   </Col>
                 </Row>

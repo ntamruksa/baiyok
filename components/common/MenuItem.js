@@ -25,10 +25,10 @@ const MenuItem = ({ item = null }) => {
       {/* {showEditMenu && <EditMenuItemModal show={showEditMenu} onHide={hideEditMenu} item={item} />}
       {showBurgerMenu && <EditBurgerModal show={showBurgerMenu} onHide={hideBurgerMenu} item={item} />}*/}
       {showMenu && <MenuModal show={showMenu} onHide={hideMenu} item={item} />}
-      <div className='p-3 border-bottom gold-members' onClick={() => setShowMenu(true)}>
+      <div className='p-3 bg-white rounded border shadow-sm m-2 flex-grow-1' onClick={() => setShowMenu(true)}>
         {/* todo don't use float-right... use flex insteead */}
         <Row>
-          <Col sm={10} xs={8}>
+          <Col sm={7} xs={8} >
             <Media>
               <Media.Body>
                 <h4 className='mb-2 text-capitalize'>
@@ -41,8 +41,8 @@ const MenuItem = ({ item = null }) => {
                 </h4>
                 <p className='text-gray mb-0'>
                   {item.subtitle &&
-                    (item.subtitle.charAt(item.subtitle.length - 1) === '.'
-                      ? item.subtitle.substring(0, item.subtitle.length - 1)
+                    (item.subtitle.length > 90
+                      ? `${item.subtitle.substring(0, 90)}..`
                       : item.subtitle)}
                 </p>
                 <p className='mb-0'>${(item.priceInCents / 100).toFixed(2)}</p>
