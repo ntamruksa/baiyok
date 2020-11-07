@@ -44,7 +44,7 @@ const MenuModal = ({ show, onHide, item }) => {
                   label={option.title}
                   name="menuOption"
                   key={index}
-                  id={index}
+                  id={`menuOption-${index}`}
                   className="menu-modal-option-body-title-inner"
                   onClick={() => selectOption(index)}
                 />
