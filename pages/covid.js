@@ -33,10 +33,10 @@ export default function Covid() {
     e.preventDefault()
     const data ={email, firstName, lastName, phone, optIn, party, date: new Date()}
     const payload ={text: JSON.stringify(data)}
-    fetch(process.env.NEXT_PUBLIC_SLACK_HOOK_URL, {
-      method: 'post',
-      body: JSON.stringify(payload)
-    }).then((res) => {
+    // fetch(process.env.NEXT_PUBLIC_SLACK_HOOK_URL, {
+    //   method: 'post',
+    //   body: JSON.stringify(payload)
+    // }).then((res) => {
       api.checkin(data).then((res) => {
         localStorage.setItem('covidEmail', email);
         localStorage.setItem('covidFirstName', firstName);
@@ -47,8 +47,7 @@ export default function Covid() {
         console.error(err)
         router.push('/thankyou')
       })
-
-    })
+    // })
   }
   return (
     <Container>
