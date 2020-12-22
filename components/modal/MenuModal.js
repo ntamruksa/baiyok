@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Form, Modal, Row, Col } from 'react-bootstrap'
-
+import { addItemToCart } from '../../services/cart'
 const MenuModal = ({ show, onHide, item }) => {
-  const [itemTotalPriceInCents, setItemTotalPriceInCents] = useState(item.priceInCents)
+  const [itemTotalPriceInCents, setItemTotalPriceInCents] = useState(
+    item.priceInCents
+  )
 
   const selectOption = (e) => {
     const basePrice = item.priceInCents
@@ -10,55 +12,66 @@ const MenuModal = ({ show, onHide, item }) => {
     setItemTotalPriceInCents(basePrice + optionPrice)
   }
 
+  const addItem = (hide) => {
+    addItemToCart(item, itemTotalPriceInCents, null, 'test', 1)
+    hide()
+  }
+
   return (
-    <Modal show={show} onHide={onHide} size='lg' centered >
-      <Modal.Header closeButton={true}>
-      </Modal.Header>
-      <div>{item.image && <img src={item.image} alt='Menu Preview' className='menu-photo'/>}</div>
+    <Modal show={show} onHide={onHide} size='lg' centered>
+      <Modal.Header closeButton={true}></Modal.Header>
+      <div>
+        {item.image && (
+          <img src={item.image} alt='Menu Preview' className='menu-photo' />
+        )}
+      </div>
       <Modal.Body>
         <Form>
-          <h1 className='text-capitalize p-4 menu-modal-title'>
-          {item.title}
-          </h1>
+          <h1 className='text-capitalize p-4 menu-modal-title'>{item.title}</h1>
           <p className='text-gray mb-0 p-4 menu-modal-subtitle'>
             {item.subtitle &&
               (item.subtitle.charAt(item.subtitle.length - 1) === '.'
                 ? item.subtitle.substring(0, item.subtitle.length - 1)
                 : item.subtitle)}
           </p>
-          {item.options && <>
-            <div className="menu-modal-option-header">
-              <div className="menu-modal-option-header-title">
-              Choice of Preparation
+          {item.options && (
+            <>
+              <div className='menu-modal-option-header'>
+                <div className='menu-modal-option-header-title'>
+                  Choice of Preparation
                 </div>
-                <div className="menu-modal-option-header-subtitle">
-              Choose One
+                <div className='menu-modal-option-header-subtitle'>
+                  Choose One
                 </div>
+              </div>
+              <div className='menu-modal-option-body'>
+                {item.options.map((option, index) => (
+                  <Row className='py-2' key={index}>
+                    <Col className='menu-modal-option-body-title col-auto'>
+                      <Form.Check
+                        type='radio'
+                        label={option.title}
+                        name='menuOption'
+                        key={index}
+                        id={`menuOption-${index}`}
+                        className='menu-modal-option-body-title-inner'
+                        onClick={() => selectOption(index)}
+                      />
+                    </Col>
+                    <Col className='menu-modal-option-body-price'>
+                      +${(option.priceInCents / 100).toFixed(2)}
+                    </Col>
+                  </Row>
+                ))}
+              </div>
+            </>
+          )}
+          <Row>
+            <div className="theme-btn mb-0 p-4" onClick={() => addItem(onHide)}>add to order</div>
+            <div className='theme-btn mb-0 p-4'>
+              ${(itemTotalPriceInCents / 100).toFixed(2)}
             </div>
-            <div className="menu-modal-option-body">
-            {item.options.map((option, index) => (
-              <Row className="py-2" key={index}>
-                <Col className="menu-modal-option-body-title col-auto">
-                  <Form.Check
-                    type="radio"
-                    label={option.title}
-                    name="menuOption"
-                    key={index}
-                    id={`menuOption-${index}`}
-                    className="menu-modal-option-body-title-inner"
-                    onClick={() => selectOption(index)}
-                  />
-                </Col>
-                <Col className="menu-modal-option-body-price">
-                  +${(option.priceInCents / 100).toFixed(2)}
-                </Col>
-              </Row>
-            ))}
-          </div>
-          </>}
-          <div className="menu-modal-price mb-0 p-4">
-          ${(itemTotalPriceInCents / 100).toFixed(2)}
-          </div>
+          </Row>
         </Form>
       </Modal.Body>
     </Modal>

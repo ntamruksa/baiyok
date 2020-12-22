@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Image } from 'react-bootstrap'
 import Icon from './common/FontAwesome'
 import { getCart } from '../services/cart'
 
-const NavPage = () => {
+const NavPage = ({ toggleCart }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   const closeMenu = () => {
@@ -55,9 +55,12 @@ const NavPage = () => {
               <Link href='/#section-contactus' passHref>
                 <Nav.Link activeclassname='active'>Contact</Nav.Link>
               </Link>
-              <a target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine'>
+              {/* <a target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine'>
                 <Nav.Link activeclassname='active' target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine' >Menulog Order</Nav.Link>
-              </a>
+              </a> */}
+              <Link href='#' passHref>
+                <Nav.Link activeclassname='active' onClick={toggleCart}>Cart</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -22,7 +22,7 @@ export const clearCart = () => typeof window !== 'undefined' && window.localStor
   items: []
 }))
 
-export const addItemToCart = (item, totalPrice, addons, note) => {
+export const addItemToCart = (item, totalPrice, addons, note, quantity) => {
   const cart = getCart()
   const cartTotal = cart.cartTotal + totalPrice
   const cartSurcharge = 0
@@ -32,7 +32,7 @@ export const addItemToCart = (item, totalPrice, addons, note) => {
     cartSubTotal: cartTotal + cartSurcharge,
     items: [
       ...cart.items,
-      { title: item.title, addons, basePrice: item.priceInCents, item, totalPrice, note, id: uuid() }
+      { title: item.title, addons, basePrice: item.priceInCents, item, totalPrice, note, id: uuid(), quantity }
     ]
   })
 }
