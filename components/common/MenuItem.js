@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 // import EditBurgerModal from '../modals/EditBurgerModal'
 import MenuModal from '../modal/MenuModal'
 
-const MenuItem = ({ item = null }) => {
+const MenuItem = ({ item = null, hideCart }) => {
   // const [showEditMenu, setShowEditMenu] = useState(false)
   // const [showBurgerMenu, setShowBurgerMenu] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
@@ -19,16 +19,23 @@ const MenuItem = ({ item = null }) => {
   const hideMenu = () => {
     setShowMenu(false)
   }
+  
+  const showMenuModal = () => {
+    setShowMenu(true)
+    hideCart()
+  }
 
   return (
     <>
       {/* {showEditMenu && <EditMenuItemModal show={showEditMenu} onHide={hideEditMenu} item={item} />}
       {showBurgerMenu && <EditBurgerModal show={showBurgerMenu} onHide={hideBurgerMenu} item={item} />}*/}
       {showMenu && <MenuModal show={showMenu} onHide={hideMenu} item={item} />}
-      <div className='p-3 bg-white rounded border shadow-sm m-2 flex-grow-1' onClick={() => setShowMenu(true)}>
+      <div
+        className='p-3 bg-white rounded border shadow-sm m-2 flex-grow-1'
+        onClick={() => showMenuModal()}>
         {/* todo don't use float-right... use flex insteead */}
         <Row>
-          <Col sm={7} xs={8} >
+          <Col sm={7} xs={8}>
             <Media>
               <Media.Body>
                 <h4 className='mb-2 text-capitalize'>

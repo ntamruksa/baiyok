@@ -43,3 +43,11 @@
     overflow: scroll;
   }
 }
+.icon--trash {
+  background: none;
+  border: 0;
+  &:hover {
+    color: $color-primary;
+    cursor: pointer;
+  }
+}

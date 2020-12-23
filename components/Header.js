@@ -1,15 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Nav from './Nav'
 import Cart from './cart/Cart'
-const Header = () => {
-  const [showCart, setShowCart] = useState(false)
-  
-  const hideCart = () => {
-    setShowCart(false)
-  }
-  const toggleCart = () => {
-    setShowCart(!showCart)
-  }
+const Header = ({ showCart, toggleCart, hideCart }) => {
   return (
     <div className='header'>
       {/* <div className='header__logo-box'>
@@ -23,9 +15,9 @@ const Header = () => {
       </h1>
     </div> */}
       <div className='header__menu'>
-        <Nav toggleCart={toggleCart}/>
+        <Nav toggleCart={toggleCart} />
       </div>
-      <Cart open={showCart} hideCart={hideCart}/>
+      <Cart open={showCart} hideCart={hideCart} />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Modal, Row, Col } from 'react-bootstrap'
 import { addItemToCart } from '../../services/cart'
 const MenuModal = ({ show, onHide, item }) => {
@@ -6,16 +6,43 @@ const MenuModal = ({ show, onHide, item }) => {
     item.priceInCents
   )
 
-  const selectOption = (e) => {
+  const [option, setOption] = useState({})
+  const [validOption, setValidOption] = useState(true)
+
+  const selectOption = (index) => {
     const basePrice = item.priceInCents
-    const optionPrice = item.options[e].priceInCents | 0
+    const optionPrice = item.options[index].priceInCents | 0
+    setOption({title: item.options[index].title, priceInCents: optionPrice})
     setItemTotalPriceInCents(basePrice + optionPrice)
   }
 
-  const addItem = (hide) => {
-    addItemToCart(item, itemTotalPriceInCents, null, 'test', 1)
+  const addItem = (e, hide) => {
+    e.preventDefault()
+    addItemToCart(item, itemTotalPriceInCents, option, 'test', quantity)
     hide()
   }
+
+  const [quantity, setQuantity] = useState(1)
+
+  const addQuantity = (e) => {
+    e.preventDefault()
+    setQuantity(quantity + 1)
+  }
+
+  const removeQuantity = (e) => {
+    e.preventDefault()
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
+
+  useEffect(() => {
+    if (item.options && !option.title) {
+      setValidOption(false)
+    } else {
+      setValidOption(true)
+    }
+  }, [option])
 
   return (
     <Modal show={show} onHide={onHide} size='lg' centered>
@@ -59,18 +86,41 @@ const MenuModal = ({ show, onHide, item }) => {
                       />
                     </Col>
                     <Col className='menu-modal-option-body-price'>
-                      +${(option.priceInCents / 100).toFixed(2)}
+                      {option.priceInCents > 0 ? `+${(option.priceInCents / 100).toFixed(2)}` : ''}
                     </Col>
                   </Row>
                 ))}
               </div>
             </>
           )}
-          <Row>
-            <div className="theme-btn mb-0 p-4" onClick={() => addItem(onHide)}>add to order</div>
-            <div className='theme-btn mb-0 p-4'>
-              ${(itemTotalPriceInCents / 100).toFixed(2)}
-            </div>
+          <Row >
+            <Col sm={3}>
+              <div className='qty-btn'>
+                <button
+                  className='round-btn ml-4'
+                  onClick={(e) => removeQuantity(e)}>
+                  &minus;
+                </button>
+                <div className='mb-0 mt-2 p-4'>{quantity}</div>
+                <button
+                  className='round-btn mr-4'
+                  onClick={(e) => addQuantity(e)}>
+                  &#43;
+                </button>
+              </div>
+            </Col>
+            <Col>
+              <button
+                className='theme-btn full-width-btn mb-0 p-4'
+                onClick={(e) => addItem(e, onHide)} disabled={!validOption}>
+                {`add ${quantity} to order`}
+              </button>
+            </Col>
+            <Col sm={2}>
+              <div className='invert-theme-btn mb-0 p-4'>
+                ${(itemTotalPriceInCents * quantity/ 100).toFixed(2)}
+              </div>
+            </Col>
           </Row>
         </Form>
       </Modal.Body>

@@ -1,6 +1,7 @@
 import React from "react";
 import formatMoney from "../../services/formatMoney";
 import styled from "styled-components";
+import RemoveFromCart from './RemoveFromCart'
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -17,11 +18,12 @@ const CartItemStyles = styled.li`
   }
 `;
 
-const CartItem = ({ cartItem }) => (
+const CartItem = ({ cartItem, refreshCart }) => (
   <CartItemStyles>
     <img width="80" src={cartItem.item.image} alt={cartItem.item.title} />
     <div className="cart-item-details">
       <h3>{cartItem.item.title}</h3>
+      {cartItem.option && <p>{cartItem.option.title} {cartItem.option.priceInCents > 0 ? `(${formatMoney(cartItem.option.priceInCents)})` : ''}</p>}
       <p>
         {formatMoney(cartItem.totalPrice * cartItem.quantity)}
         {" - "}
@@ -30,6 +32,7 @@ const CartItem = ({ cartItem }) => (
         </em>
       </p>
     </div>
+    <RemoveFromCart cartItem={cartItem} refreshCart={refreshCart}/>
   </CartItemStyles>
 );
 
