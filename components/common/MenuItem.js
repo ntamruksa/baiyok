@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 // import EditBurgerModal from '../modals/EditBurgerModal'
 import MenuModal from '../modal/MenuModal'
 
-const MenuItem = ({ item = null, hideCart }) => {
+const MenuItem = ({ item = null, hideCart, setGlobalCart }) => {
   // const [showEditMenu, setShowEditMenu] = useState(false)
   // const [showBurgerMenu, setShowBurgerMenu] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
@@ -19,7 +19,7 @@ const MenuItem = ({ item = null, hideCart }) => {
   const hideMenu = () => {
     setShowMenu(false)
   }
-  
+
   const showMenuModal = () => {
     setShowMenu(true)
     hideCart()
@@ -29,7 +29,7 @@ const MenuItem = ({ item = null, hideCart }) => {
     <>
       {/* {showEditMenu && <EditMenuItemModal show={showEditMenu} onHide={hideEditMenu} item={item} />}
       {showBurgerMenu && <EditBurgerModal show={showBurgerMenu} onHide={hideBurgerMenu} item={item} />}*/}
-      {showMenu && <MenuModal show={showMenu} onHide={hideMenu} item={item} />}
+      {showMenu && <MenuModal show={showMenu} onHide={hideMenu} item={item} setGlobalCart={setGlobalCart}/>}
       <div
         className='p-3 bg-white rounded border shadow-sm m-2 flex-grow-1'
         onClick={() => showMenuModal()}>
@@ -40,10 +40,10 @@ const MenuItem = ({ item = null, hideCart }) => {
               <Media.Body>
                 <h4 className='mb-2 text-capitalize'>
                   <strong>{item.title}</strong>
-                  {item.badge && (
+                  {item.badges && item.badges.map( badge => (
                     <Badge variant='danger' className='ml-2 text-capitalize'>
-                      {item.badge}
-                    </Badge>
+                      {badge}
+                    </Badge>)
                   )}
                 </h4>
                 <p className='text-gray mb-0'>

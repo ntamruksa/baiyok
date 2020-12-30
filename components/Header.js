@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from './Nav'
 import Cart from './cart/Cart'
-const Header = ({ showCart, toggleCart, hideCart }) => {
+const Header = ({ showCart, toggleCart, hideCart, globalCart, setGlobalCart }) => {
   return (
     <div className='header'>
       {/* <div className='header__logo-box'>
@@ -15,9 +15,9 @@ const Header = ({ showCart, toggleCart, hideCart }) => {
       </h1>
     </div> */}
       <div className='header__menu'>
-        <Nav toggleCart={toggleCart} />
+        <Nav toggleCart={toggleCart} globalCart={globalCart}/>
       </div>
-      <Cart open={showCart} hideCart={hideCart} />
+      <Cart open={showCart} hideCart={hideCart} setGlobalCart={setGlobalCart}/>
     </div>
   )
 }

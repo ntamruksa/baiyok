@@ -14,7 +14,7 @@ import Icon from '../components/common/FontAwesome'
 
 import api from '../services/API'
 
-const Menu = ({hideCart}) => {
+const Menu = ({hideCart, setGlobalCart}) => {
   const [showModal, setShowModal] = useState(false)
   const [menuitems, setMenuitems] = useState([])
   const closeModal = () => {
@@ -73,11 +73,12 @@ const Menu = ({hideCart}) => {
                           // )
                           .map((item) => (
                             <Col
+                              key={item._id}
                               md={4}
                               sm={6}
                               xs={12}
                               className='d-flex flex-grow-1'>
-                              <MenuItem key={item._id} item={item} hideCart={hideCart}/>
+                              <MenuItem key={item._id} item={item} hideCart={hideCart} setGlobalCart={setGlobalCart}/>
                             </Col>
                           ))}
                       </Row>

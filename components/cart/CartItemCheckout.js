@@ -1,11 +1,9 @@
 import React from "react";
 import formatMoney from "../../services/formatMoney";
 import styled from "styled-components";
-import RemoveFromCart from './RemoveFromCart'
-import QuantityUpdate from './QuantityUpdate'
 const CartItemStyles = styled.li`
   padding: 1rem 0;
-  border-bottom: 1px solid ${(props) => props.theme.lightgrey};
+  /* border-bottom: 1px solid ${(props) => props.theme.lightgrey}; */
   display: grid;
   align-items: center;
   grid-template-columns: auto 1fr auto auto;
@@ -22,12 +20,12 @@ const CartItem = ({ cartItem, refreshCart }) => (
   <CartItemStyles>
     <img width="80" src={cartItem.item.image} alt={cartItem.item.title} />
     <div className="cart-item-details">
-      <h3>{cartItem.item.title}</h3>
-      {cartItem.option && <p>{cartItem.option.title} {cartItem.option.priceInCents > 0 ? `(${formatMoney(cartItem.option.priceInCents)})` : ''}</p>}
-      {cartItem.glutenFree && <p>
+      <h3 className='text-left'>{cartItem.item.title}</h3>
+      {cartItem.option && <p className='text-left'>{cartItem.option.title} {cartItem.option.priceInCents > 0 ? `(${formatMoney(cartItem.option.priceInCents)})` : ''}</p>}
+      {cartItem.glutenFree && <p className='text-left'>
         Gluten Free ($1.00)
       </p>}
-      <p>
+      <p className='text-left'>
         {formatMoney(cartItem.totalPrice * cartItem.quantity)}
         {" - "}
         <em>
@@ -35,12 +33,10 @@ const CartItem = ({ cartItem, refreshCart }) => (
         </em>
 
       </p>
-      {cartItem.note && <p>
+      {cartItem.note && <p className='text-left'>
         Note: {cartItem.note}
       </p>}
     </div>
-    <QuantityUpdate cartItem={cartItem} refreshCart={refreshCart}/>
-    <RemoveFromCart cartItem={cartItem} refreshCart={refreshCart}/>
   </CartItemStyles>
 );
 

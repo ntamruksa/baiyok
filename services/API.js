@@ -16,7 +16,9 @@ const addBooking = (reservation) => {
 }
 
 const getBooking = (bookingId) => {
-  return client.get(`/api/getBooking?bookingId=${bookingId}`).then((res) => res.data)
+  return client
+    .get(`/api/getBooking?bookingId=${bookingId}`)
+    .then((res) => res.data)
 }
 
 const checkin = (checkin) => {
@@ -27,10 +29,22 @@ const getBookingSetup = (date) => {
   return client.get(`/api/getBookingSetup?date=${date}`).then((res) => res.data)
 }
 
+const addOrder = (cart) => {
+  return client.post('/api/addOrder', { cart }).then((res) => res.data)
+}
+
+const getOrder = (orderId) => {
+  return client
+    .get(`/api/getOrder?orderId=${orderId}`)
+    .then((res) => res.data)
+}
+
 export default {
   getMenuItems,
   addBooking,
   checkin,
   getBooking,
-  getBookingSetup
+  getBookingSetup,
+  addOrder,
+  getOrder
 }

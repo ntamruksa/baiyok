@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { Navbar, Nav, Container, Image } from 'react-bootstrap'
+import { Navbar, Nav, Container, Image, Row } from 'react-bootstrap'
 import Icon from './common/FontAwesome'
 import { getCart } from '../services/cart'
+import CartCount from './cart/CartCount'
 
-const NavPage = ({ toggleCart }) => {
+const NavPage = ({ toggleCart, globalCart }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   const closeMenu = () => {
@@ -22,7 +23,7 @@ const NavPage = ({ toggleCart }) => {
         id='site-navbar'>
         <Container>
           <Navbar.Brand to='/'>
-            <Nav.Link eventKey={0} as={Link} activeclassname='active' href='/'>
+            <Nav.Link eventKey={0} as={Link} href='/'>
               <Image
                 src='/Logo-Baiyok-small.png'
                 alt=''
@@ -30,7 +31,7 @@ const NavPage = ({ toggleCart }) => {
               />
             </Nav.Link>
           </Navbar.Brand>
-          <Link
+          {/* <Link
             href='/checkout'
             className='navbar-toggler navbar-toggler--cart'
             style={{
@@ -39,7 +40,7 @@ const NavPage = ({ toggleCart }) => {
               color: '#F27A25'
             }}>
             <Icon icon='shopping-basket' size='2x' />
-          </Link>
+          </Link> */}
           <Navbar.Toggle className='hamburgerbar' />
           <Navbar.Collapse id='navbarNavDropdown'>
             <Nav activeKey={1} className='ml-auto' onSelect={closeMenu}>
@@ -59,8 +60,11 @@ const NavPage = ({ toggleCart }) => {
                 <Nav.Link activeclassname='active' target="_blank" href='https://www.menulog.com.au/order/baiyok-modern-thai-cuisine' >Menulog Order</Nav.Link>
               </a> */}
               <Link href='#' passHref>
-                <Nav.Link activeclassname='active' onClick={toggleCart}>Cart</Nav.Link>
+                <Nav.Link activeclassname='active' ><Row className='nav-cart justify-content-center' onClick={toggleCart} ><div>Order</div><CartCount count={ globalCart ? globalCart.items.reduce(
+                  (tally, cartItem) => tally + cartItem.quantity, 0
+                ) : 0} /></Row></Nav.Link>
               </Link>
+
             </Nav>
           </Navbar.Collapse>
         </Container>

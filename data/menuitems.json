@@ -4,10 +4,11 @@
   "subtitle" : "Grilled scallop with roasted coconut shredded, lime, Spanish onion, peanut, ginger and fried shrimp served on betel leaf and palm sugar herbs relish.",
   "priceInCents" : 1800,
   "category" : "entree",
-  "badge" : "dine-in only",
+  "badges" : ["dine-in only"],
   "available" : true,
   "itemOrder" : 1,
   "categoryOrder" : 1,
+  "dinein": true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602221431/baiyok/gqjzodrvbdmlbkxfdinu.jpg"
 }
 {
@@ -68,6 +69,8 @@
   "available" : true,
   "itemOrder" : 7,
   "categoryOrder" : 1,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602225337/baiyok/hdg9dm5htsgo433b05dj.jpg"
 }
 {
@@ -104,7 +107,7 @@
   "title" : "Tom Yum",
   "subtitle" : "Spicy and sour soup with mushroom and fresh Thai herbs.",
   "priceInCents" : 900,
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "category" : "soup",
   "available" : true,
   "itemOrder" : 1,
@@ -134,7 +137,7 @@
   "title" : "Green Curry",
   "subtitle" : "Spicy green curry, bamboo shoot, French bean, coconut milk and basil.",
   "priceInCents" : 1800,
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "category" : "curry",
   "available" : true,
   "itemOrder" : 1,
@@ -182,7 +185,7 @@
   "subtitle" : "Sliced of roasted breast duck set in homemade red curry with pineapple, cherry tomato, basil and coconut milk.",
   "priceInCents" : 2400,
   "category" : "curry",
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "available" : true,
   "itemOrder" : 4,
   "categoryOrder" : 3,
@@ -193,7 +196,7 @@
   "subtitle" : "Fresh local king prawns set in aromic green curry, lightly flavoured with fresh young coconut granted flesh, served in fresh young coconut.",
   "priceInCents" : 3200,
   "category" : "curry",
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "available" : true,
   "itemOrder" : 5,
   "categoryOrder" : 3,
@@ -215,9 +218,10 @@
   "priceInCents" : 2000,
   "category" : "main",
   "available" : true,
-  "badge" : "Spicy",
+  "badges" : ["Spicy", "GF"],
   "itemOrder" : 7,
   "categoryOrder" : 4,
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602224912/baiyok/iev011ug1ysk7wl79wpo.jpg"
 }
 {
@@ -235,10 +239,11 @@
   "subtitle" : "Sliced seared grain fed rump with lemongrass, cucumber, cherry tomato, red onion, coriander, mint and chili lime dressing",
   "priceInCents" : 2000,
   "category" : "main",
-  "badge" : "Spicy",
+  "badges" : ["Spicy", "GF"],
   "available" : true,
   "itemOrder" : 9,
   "categoryOrder" : 4,
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602304532/baiyok/do7ceyie0wfx5jq5bo6f.jpg"
 }
 {
@@ -246,7 +251,7 @@
   "subtitle" : "Fresh banana blossom tossed with local prawn cutlet, red onion, mint, chilli jam lime dressing, coconut milk and crispy fried onion",
   "priceInCents" : 3100,
   "category" : "main",
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "available" : true,
   "itemOrder" : 10,
   "categoryOrder" : 4,
@@ -257,7 +262,7 @@
   "subtitle" : "Crispy breast duck with fresh Lebanese cucumber, coriander, betel leaf, mint, fried onion, crispy ginger and mild chili lime dressing",
   "priceInCents" : 2500,
   "category" : "main",
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "available" : true,
   "itemOrder" : 11,
   "categoryOrder" : 4,
@@ -291,13 +296,15 @@
   "available" : true,
   "itemOrder" : 14,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602301899/baiyok/meamgc51vjxyzatuqodi.jpg"
 }
 {
   "title" : "Chilli Prawn",
   "subtitle" : "Sauteed local king prawn with three flavors chilli sauce served on steamed broccoli",
   "priceInCents" : 2800,
-  "badge" : "spicy",
+  "badges" : ["spicy"],
   "category" : "main",
   "available" : true,
   "itemOrder" : 15,
@@ -310,7 +317,7 @@
   "priceInCents" : 1800,
   "category" : "main",
   "available" : true,
-  "badge" : "Spicy",
+  "badges" : ["Spicy"],
   "itemOrder" : 16,
   "categoryOrder" : 4,
   "options" : [
@@ -341,10 +348,11 @@
   "subtitle" : "Stir fried French beans, mushroom, capsicum, chilli blended and basil",
   "priceInCents" : 1800,
   "category" : "main",
-  "badge" : "Spicy",
+  "badges" : ["Spicy", "GF"],
   "available" : true,
   "itemOrder" : 18,
   "categoryOrder" : 4,
+  "glutenFreeAvailable" : true,
   "options" : [
     {"title": "Vegetable and Bean Curd", "priceInCents" : 0},
     {"title": "Chicken", "priceInCents" : 0},
@@ -361,6 +369,8 @@
   "available" : true,
   "itemOrder" : 19,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "options" : [
     {"title": "Chicken", "priceInCents" : 0},
     {"title": "Beef", "priceInCents" : 0},
@@ -386,6 +396,8 @@
   "available" : true,
   "itemOrder" : 21,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "options" : [
     {"title": "John Dory Fillet", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 500}
@@ -410,6 +422,8 @@
   "available" : true,
   "itemOrder" : 23,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602301155/baiyok/s7wwsltcozvhcktutmof.jpg"
 }
 {
@@ -420,6 +434,8 @@
   "available" : true,
   "itemOrder" : 24,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602303164/baiyok/oekqvituijo336dpeurq.jpg"
 }
 {
@@ -440,6 +456,8 @@
   "available" : true,
   "itemOrder" : 26,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602302939/baiyok/yzekygdul5kck0weh7ot.jpg"
 }
 {
@@ -465,6 +483,8 @@
   "available" : true,
   "itemOrder" : 28,
   "categoryOrder" : 4,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "options" : [
     {"title": "Chicken", "priceInCents" : 0},
     {"title": "Beef", "priceInCents" : 0},
@@ -476,6 +496,8 @@
   "title" : "Fried Rice",
   "subtitle" : "Fried rice Thai style fried rice with egg.",
   "priceInCents" : 1500,
+  "badges" : ["GF"],
+  "glutenFreeAvailable" : true,
   "options" : [
     {"title": "Chicken", "priceInCents" : 0},
     {"title": "Beef", "priceInCents" : 0},
