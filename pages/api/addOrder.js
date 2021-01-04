@@ -1,10 +1,20 @@
-const { connectToDatabaseUsingCache } = require('../../services/db')
+const { connectToDatabaseUsingCache, findNotDeleted } = require('../../services/db')
 const stripe = require('../../services/stripe')
 let db = null
 
 export default async (req, res) => {
   db = await connectToDatabaseUsingCache(process.env.NEXT_MONGODB_URI, db)
   // 1. get order
+  const orderCount = await db.collection('orders_counter')
+  const currentCounter = await orderCount.findOneAndUpdate(
+    {},
+    { $inc: { count: 1 } },
+    { returnOriginal: true, new: false }
+  )
+    // add prefix
+    const orderNumber = (currentCounter.value.count % 100) + 1
+    const paddedOrderNum = orderNumber < 10 ? '00' + orderNumber : (orderNumber < 100 ? '0' + orderNumber : orderNumber)
+
   const cart = req.body.cart
   const order = {
     status: 'open',
@@ -17,10 +27,14 @@ export default async (req, res) => {
     email: cart.email,
     pickupName: cart.pickupName,
     pickupTime: cart.pickupTime,
-    phone: cart.phone
+    phone: cart.phone,
+    orderNumber: paddedOrderNum
   }
   // 2. recalculate the total of the price
-  const amount = order.items.reduce((tally, item) => tally + item.totalPrice, 0)
+  const amount = order.items.reduce(
+    (tally, item) => tally + item.totalPrice * item.quantity,
+    0
+  )
   console.log(`Going to charge for total amount of ${amount}`)
   // 3. create stripe charge
   // const charge = await stripe.charges.create({
@@ -53,8 +67,6 @@ export default async (req, res) => {
   // 6. update order session id
   await db
     .collection('orders')
-    .updateOne({ _id: insertedId }, { $set: { sessionId: session.id } })
-  // 5. return order to client
-
+    .updateOne({ _id: insertedId }, { $set: { sessionId: session.id, successUrl: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}` } })
   res.status(200).json(session)
 }

@@ -39,6 +39,12 @@ const getOrder = (orderId) => {
     .then((res) => res.data)
 }
 
+const sendOrderEmail = (orderId) => {
+  return client
+    .get(`/api/sendOrderEmail?orderId=${orderId}`)
+    .then((res) => res.data)
+}
+
 export default {
   getMenuItems,
   addBooking,
@@ -46,5 +52,6 @@ export default {
   getBooking,
   getBookingSetup,
   addOrder,
-  getOrder
+  getOrder,
+  sendOrderEmail
 }

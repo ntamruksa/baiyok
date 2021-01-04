@@ -17,7 +17,7 @@ const Header = ({ showCart, toggleCart, hideCart, globalCart, setGlobalCart }) =
       <div className='header__menu'>
         <Nav toggleCart={toggleCart} globalCart={globalCart}/>
       </div>
-      <Cart open={showCart} hideCart={hideCart} setGlobalCart={setGlobalCart}/>
+      {showCart && <Cart open={showCart} hideCart={hideCart} setGlobalCart={setGlobalCart}/>}
     </div>
   )
 }

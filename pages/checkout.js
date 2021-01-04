@@ -1,6 +1,13 @@
-import { Form, Container, FormControl, ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
-import React, { useState } from 'react'
+import {
+  Form,
+  Container,
+  FormControl,
+  ToggleButtonGroup,
+  ToggleButton
+} from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import moment from 'moment'
 import api from '../services/API'
 import CheckoutCart from '../components/cart/CheckoutCart'
 import { getCart } from '../services/cart'
@@ -10,31 +17,57 @@ import CartItemCheckout from '../components/cart/CartItemCheckout'
 
 export default function Checkout({ refreshCart }) {
   const [cart, setCart] = useState(getCart())
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [pickupName, setPickupName] = useState('')
   const [phone, setPhone] = useState('')
-  const [blockedTimeList, setBlockedTimeList] = useState({blockedTime: []})
+  const [blockedTimeList, setBlockedTimeList] = useState({ blockedTime: [] })
   const [time, setTime] = useState(null)
+  const availableTime = Number(
+    moment().add(20, 'minutes').hours().toString() +
+      moment().add(20, 'minutes').minutes().toString()
+  )
   const timeList = [
-    { id: 545, label: '5:45 pm' },
-    { id: 600, label: '6:00 pm' },
-    { id: 615, label: '6:15 pm' },
-    { id: 630, label: '6:30 pm' },
-    { id: 645, label: '6:45 pm' },
-    { id: 700, label: '7:00 pm' },
-    { id: 715, label: '7:15 pm' },
-    { id: 730, label: '7:30 pm' },
-    { id: 745, label: '7:45 pm' },
-    { id: 800, label: '8:00 pm' },
-    { id: 815, label: '8:15 pm' },
-    { id: 830, label: '8:30 pm' },
-    { id: 845, label: '8:45 pm' },
-    { id: 900, label: '9:00 pm' },
-    { id: 915, label: '9:15 pm' },
-    { id: 930, label: '9:30 pm' }
+    { id: 545, label: '5:45 pm', value: 1745 },
+    { id: 600, label: '6:00 pm', value: 1800 },
+    { id: 615, label: '6:15 pm', value: 1815 },
+    { id: 630, label: '6:30 pm', value: 1830 },
+    { id: 645, label: '6:45 pm', value: 1845 },
+    { id: 700, label: '7:00 pm', value: 1900 },
+    { id: 715, label: '7:15 pm', value: 1915 },
+    { id: 730, label: '7:30 pm', value: 1930 },
+    { id: 745, label: '7:45 pm', value: 1945 },
+    { id: 800, label: '8:00 pm', value: 2000 },
+    { id: 815, label: '8:15 pm', value: 2015 },
+    { id: 830, label: '8:30 pm', value: 2030 },
+    { id: 845, label: '8:45 pm', value: 2045 },
+    { id: 900, label: '9:00 pm', value: 2100 },
+    { id: 915, label: '9:15 pm', value: 2115 },
+    { id: 930, label: '9:30 pm', value: 2130 }
   ]
+  const [isValid, setIsValid] = useState(null)
+  useEffect(() => {
+    const validPhoneNumber = (n) =>
+      n.toString().length === 10 && n.toString().substring(0, 2) === '04'
+    if (!pickupName) {
+      setIsValid(false)
+      setErrorMessage('Pickup Name is required')
+    } else if (time === null) {
+      setIsValid(false)
+      setErrorMessage('Please select Pickup Time')
+    } else if (!email) {
+      setIsValid(false)
+      setErrorMessage('Email is required')
+    } else if (!phone || !validPhoneNumber(phone)) {
+      setIsValid(false)
+      setErrorMessage('Valid Phone Number is Required')
+    } else {
+      setIsValid(true)
+      setErrorMessage('')
+    }
+  }, [phone, email, time, pickupName])
   const handleInputChange = (e) => {
     const value = e.target.value
     if (e.target.id === 'formBasicEmail') {
@@ -69,6 +102,7 @@ export default function Checkout({ refreshCart }) {
       })
       .catch((err) => {
         console.error(err)
+        setErrorMessage(err.message)
         router.push('/thankyou')
       })
     // })
@@ -93,22 +127,55 @@ export default function Checkout({ refreshCart }) {
               />
             </Form.Group>
             <Form.Group>
-                <Form.Label>
-                  Pickup Time
-                </Form.Label>
-                <ToggleButtonGroup size="lg" className="m-2 flex-wrap" name="time" >
-                  {timeList.map(t => {
-                    if (blockedTimeList.blockedTime && blockedTimeList.blockedTime.includes(t.id)) {
-                      return (<ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" disabled value={t.label} key={t.label}>{t.label}</ToggleButton>)
-                    } else {
-                      return (
-                        <ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" onClick={handleTimeChange} value={t.label} key={t.label}>{t.label}</ToggleButton>
-                      )
-                    }
-
-                  })}
-                </ToggleButtonGroup>
-              </Form.Group>
+              <Form.Label>Pickup Time</Form.Label>
+              <ToggleButtonGroup
+                size='lg'
+                className='m-2 flex-wrap'
+                name='time'>
+                {timeList.map((t) => {
+                  if (
+                    blockedTimeList.blockedTime &&
+                    blockedTimeList.blockedTime.includes(t.id)
+                  ) {
+                    return (
+                      <ToggleButton
+                        name='time'
+                        variant='outline-dark'
+                        className='btn m-2 flex-grow-0'
+                        disabled
+                        value={t.label}
+                        key={t.label}>
+                        {t.label}
+                      </ToggleButton>
+                    )
+                  } else if (t.value < availableTime) {
+                    return (
+                      <ToggleButton
+                        name='time'
+                        variant='outline-dark'
+                        className='btn m-2 flex-grow-0'
+                        disabled
+                        value={t.label}
+                        key={t.label}>
+                        {t.label}
+                      </ToggleButton>
+                    )
+                  } else {
+                    return (
+                      <ToggleButton
+                        name='time'
+                        variant='outline-success'
+                        className='btn m-2 flex-grow-0'
+                        onClick={handleTimeChange}
+                        value={t.label}
+                        key={t.label}>
+                        {t.label}
+                      </ToggleButton>
+                    )
+                  }
+                })}
+              </ToggleButtonGroup>
+            </Form.Group>
             <Form.Group
               controlId='formBasicEmail'
               className='u-margin-bottom-med'>
@@ -156,8 +223,13 @@ export default function Checkout({ refreshCart }) {
               onClick={handleSubmitForm}>
               Submit
             </Button> */}
+            {errorMessage && (
+              <div className='mt-4 alert alert-danger' role='alert'>
+                {errorMessage}
+              </div>
+            )}
             <CheckoutCart cart={cart}>
-              <button className='theme-btn mt-4'>Payment</button>
+              <button className='theme-btn mt-4' disabled={!isValid}>Payment</button>
             </CheckoutCart>
           </Form>
         </div>

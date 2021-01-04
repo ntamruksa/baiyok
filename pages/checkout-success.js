@@ -5,16 +5,18 @@ import { Container, Row, Col } from 'react-bootstrap'
 import api from '../services/API'
 import formatMoney from '../services/formatMoney'
 import CartItemCheckout from '../components/cart/CartItemCheckout'
-import { clearCart } from '../services/cart'
+import { clearCart, getCart } from '../services/cart'
 // import styles from '../styles/Home.module.css'
 
-const CheckoutSuccess = ({ orderId, refreshCart }) => {
+const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
   const [order, setOrder] = useState({})
   useEffect(() => {
     async function fetchData() {
       clearCart()
+      setGlobalCart(getCart())
       const response = orderId ? await api.getOrder(orderId) : undefined
       setOrder(response)
+      api.sendOrderEmail(orderId)
     }
     fetchData()
   }, [])
@@ -27,7 +29,7 @@ const CheckoutSuccess = ({ orderId, refreshCart }) => {
             <h2 className='heading-secondary u-margin-bottom-small'>
               Checkout Success
             </h2>
-            <p className='paragraph-main px-4 mb-0'>Your order details is:</p>
+            <p className='paragraph-main px-4 mb-0'>{`Your order number is: #${order.orderNumber}`}</p>
             <Row>
               <Col className='text-right px-0'>Pickup Name:</Col>
               <Col className='text-left'>{`${order.pickupName}`}</Col>
