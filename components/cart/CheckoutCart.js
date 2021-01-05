@@ -1,34 +1,19 @@
-import React, { useState, useEffect } from 'react'
-// import StripeCheckout from 'react-stripe-checkout'
+import React, { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
-import Router, { useRouter } from 'next/router'
-import NProgress from 'nprogress'
-import PropTypes from 'prop-types'
-import { getCart, clearCart } from '../../services/cart'
+import { Spinner, Row } from 'react-bootstrap'
+
 import api from '../../services/API'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 const CheckoutCart = ({ children, cart }) => {
-  // const [cart, setCart] = useState(getCart())
+  const [loading, setLoading] = useState(false)
   const quantity = cart
     ? cart.items.reduce((tally, cartItem) => tally + cartItem.quantity, 0)
     : 0
 
-  // const onToken = (res) => {
-  //   console.log('onToken', res.id)
-  //   cart.token = res.id
-  //   api
-  //         .addOrder(cart)
-  //         .then((orderRes) => {
-  //           console.log(orderRes)
-  //           clearCart()
-  //         })
-  //         .catch((err) => {
-  //           console.error(err)
-  //         })
-  // }
   const handleClick = async (e) => {
     e.preventDefault()
+    setLoading(true)
     // Get Stripe.js instance
     const stripe = await stripePromise
     // Call your backend to create the Checkout Session
@@ -45,22 +30,22 @@ const CheckoutCart = ({ children, cart }) => {
       // error, display the localized error message to your customer
       // using `result.error.message`.
     }
+    setLoading(false)
   }
   return (
-    // <StripeCheckout
-    //   amount={cart && cart.cartSubTotal}
-    //   email={cart && cart.email}
-    //   name='Bai Yok'
-    //   description={`Order of ${quantity} dishes`}
-    //   image={cart && cart.items && cart.items.length > 0 && cart.items[0].item.image}
-    //   stripeKey={process.env.NEXT_PUBLIC_STRIPE_KEY}
-    //   currency='AUD'
-    //   token={res => onToken(res)}
-    // >
-    //   {children}
-    //   </StripeCheckout>
     <a onClick={(e) => handleClick(e)}>
-      {children}
+      {loading ? (
+        <Row className='theme-btn mt-4 ml-1' disabled>
+          <Spinner
+            animation='border'
+            aria-hidden='true'
+            className='mr-3'
+          />
+          Loading...
+        </Row>
+      ) : (
+       children
+      )}
     </a>
   )
 }
