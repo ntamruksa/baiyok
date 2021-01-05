@@ -16,7 +16,7 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
       setGlobalCart(getCart())
       const response = orderId ? await api.getOrder(orderId) : undefined
       setOrder(response)
-      api.sendOrderEmail(orderId)
+      await api.sendOrderEmail(orderId)
     }
     fetchData()
   }, [])
