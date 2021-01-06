@@ -32,13 +32,13 @@ export default async (req, res) => {
   if (order.emailSend !== true) {
   sgMail
     .send(msg)
-    .then(async () => {
-      await db.collection('orders').updateOne({_id: ObjectId(orderId)}, {$set: {emailSend : true}})
+    .then(() => {
       console.log(`Email send to ${order.email}`)
     })
     .catch((error) => {
       console.error(error)
     })
   }
+  await db.collection('orders').updateOne({_id: ObjectId(orderId)}, {$set: {emailSend : true}})
   res.status(200).json({orderId})
 }
