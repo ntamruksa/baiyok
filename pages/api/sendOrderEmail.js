@@ -3,7 +3,10 @@ sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY)
 const SENDGRID_SENDER = process.env.NEXT_SENDGRID_SENDER
 import { ObjectId } from 'mongodb'
 
-const { connectToDatabaseUsingCache, findNotDeleted } = require('../../services/db')
+const {
+  connectToDatabaseUsingCache,
+  findNotDeleted
+} = require('../../services/db')
 let db = null
 
 export default async (req, res) => {
@@ -12,10 +15,12 @@ export default async (req, res) => {
     query: { orderId = '' }
   } = req
   console.log('orderId', orderId)
-  const order = await db.collection('orders').findOne({_id: ObjectId(orderId)})
+  const order = await db
+    .collection('orders')
+    .findOne({ _id: ObjectId(orderId) })
   // Send email of Terms and Conditions to user
-    // get email template
-    let { emailTemplate, emailSubject } = await db
+  // get email template
+  let { emailTemplate, emailSubject } = await db
     .collection('tech_configs')
     .findOne(findNotDeleted({}))
   emailTemplate = emailTemplate
@@ -30,15 +35,18 @@ export default async (req, res) => {
     html: emailTemplate || ''
   }
   if (order.emailSend !== true) {
-  sgMail
-    .send(msg)
-    .then(() => {
+    try {
+      await sgMail.send(msg)
       console.log(`Email send to ${order.email}`)
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error(error)
-    })
+      if (error.response) {
+        console.error(error.response.body)
+      }
+    }
   }
-  await db.collection('orders').updateOne({_id: ObjectId(orderId)}, {$set: {emailSend : true}})
-  res.status(200).json({orderId})
+  await db
+    .collection('orders')
+    .updateOne({ _id: ObjectId(orderId) }, { $set: { emailSend: true } })
+  res.status(200).json({ orderId })
 }
