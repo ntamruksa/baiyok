@@ -36,7 +36,7 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
             </Row>
             <Row>
               <Col className='text-right px-0'>Pickup Time:</Col>
-              <Col className='text-left'>{`${order.pickupTime}`}</Col>
+              <Col className='text-left'>{order.pickupTime} {order.delayMins ? `(+${order.delayMins} mins)` : ''}</Col>
             </Row>
             <Row>
               <Col className='text-right px-0'>Contact number:</Col>
