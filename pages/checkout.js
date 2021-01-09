@@ -30,7 +30,6 @@ export default function Checkout({ refreshCart }) {
       moment().add(20, 'minutes').minutes().toString()
   )
   const timeList = [
-    { id: 545, label: '5:45 pm', value: 1745 },
     { id: 600, label: '6:00 pm', value: 1800 },
     { id: 615, label: '6:15 pm', value: 1815 },
     { id: 630, label: '6:30 pm', value: 1830 },
@@ -228,7 +227,7 @@ export default function Checkout({ refreshCart }) {
                 {errorMessage}
               </div>
             )}
-            <CheckoutCart cart={cart}>
+            <CheckoutCart cart={cart} isValid={isValid}>
               <button className='theme-btn mt-4' disabled={!isValid}>Payment</button>
             </CheckoutCart>
           </Form>

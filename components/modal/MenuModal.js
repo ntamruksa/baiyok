@@ -80,8 +80,10 @@ const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
       </div>
       <Modal.Body>
         <Form>
-          <h1 className='text-capitalize p-4 menu-modal-title'>{item.title}</h1>
-          <p className='text-gray mb-0 p-4 menu-modal-subtitle'>
+          <h1 className='text-capitalize px-4 py-2 menu-modal-title'>
+            {item.title}
+          </h1>
+          <p className='text-gray mb-0 px-4 py-2 menu-modal-subtitle'>
             {item.subtitle &&
               (item.subtitle.charAt(item.subtitle.length - 1) === '.'
                 ? item.subtitle.substring(0, item.subtitle.length - 1)
@@ -146,26 +148,33 @@ const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
             </>
           )}
           {item.dinein !== true ? (
-          <>
-            <div className='menu-modal-option-header'>
-              <div className='menu-modal-option-header-title'>
-                Special Request
+            <>
+              <div className='menu-modal-option-header'>
+                <div className='menu-modal-option-header-title'>
+                  Special Request
+                </div>
+                <div className='menu-modal-option-header-subtitle'>
+                Some special request might occur surcharge. e.g. extra sauce.
+                </div>
               </div>
-            </div>
-            <div className='menu-modal-option-body'>
-              <Form.Group controlId='formNote' className='u-margin-bottom-med'>
-                <Form.Control
-                  className='text-gray mb-0 p-4 menu-modal-subtitle'
-                  placeholder='Leave a note for the kitchen here'
-                  as='textarea'
-                  onChange={handleInputChange}
-                  rows={3}
-                  value={note}
-                />
-              </Form.Group>
-            </div>
-          </>
-          ) : <></>}
+              <div className='menu-modal-option-body'>
+                <Form.Group
+                  controlId='formNote'
+                  className='u-margin-bottom-small'>
+                  <Form.Control
+                    className='text-gray mb-0 p-4 menu-modal-subtitle'
+                    placeholder='Leave a note for the kitchen here'
+                    as='textarea'
+                    onChange={handleInputChange}
+                    rows={1}
+                    value={note}
+                  />
+                </Form.Group>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
           {item.dinein === true ? (
             <Row>
               <Col className='theme-btn p-4 mx-4' align='right'>
@@ -190,16 +199,20 @@ const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
                 </div>
               </Col>
               <Col sm={7} xs={5}>
-              {item.available !== true ? (<button
-                  className='theme-btn full-width-btn mb-0 p-4'
-                  disabled>
-                  {`Unavailable`}
-                </button>) : (<button
-                  className='theme-btn full-width-btn mb-0 p-4'
-                  onClick={(e) => addItem(e, onHide)}
-                  disabled={!validOption}>
-                  {`add ${quantity} to order`}
-                </button>)}
+                {item.available !== true ? (
+                  <button
+                    className='theme-btn full-width-btn mb-0 p-4'
+                    disabled>
+                    {`Unavailable`}
+                  </button>
+                ) : (
+                  <button
+                    className='theme-btn full-width-btn mb-0 p-4'
+                    onClick={(e) => addItem(e, onHide)}
+                    disabled={!validOption}>
+                    {`add ${quantity} to order`}
+                  </button>
+                )}
                 {/* <button
                   className='theme-btn full-width-btn mb-0 p-4'
                   onClick={(e) => addItem(e, onHide)}

@@ -28,7 +28,8 @@ export default async (req, res) => {
     pickupName: cart.pickupName,
     pickupTime: cart.pickupTime,
     phone: cart.phone,
-    orderNumber: paddedOrderNum
+    orderNumber: paddedOrderNum,
+    paymentMethodId: cart.paymentMethodId
   }
   // 2. recalculate the total of the price
   const amount = order.items.reduce(
@@ -45,28 +46,28 @@ export default async (req, res) => {
   // 4. save order to db
   const { insertedId } = await db.collection('orders').insertOne(order)
   // 5. create stripe session
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        price_data: {
-          currency: 'aud',
-          product_data: {
-            name: 'meals'
-          },
-          unit_amount: amount
-        },
-        quantity: 1
-      }
-    ],
-    customer_email: cart.email,
-    mode: 'payment',
-    success_url: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}`,
-    cancel_url: `${process.env.NEXT_CLIENT_BASE_URL}/checkout`
-  })
+  // const session = await stripe.checkout.sessions.create({
+  //   payment_method_types: ['card'],
+  //   line_items: [
+  //     {
+  //       price_data: {
+  //         currency: 'aud',
+  //         product_data: {
+  //           name: 'meals'
+  //         },
+  //         unit_amount: amount
+  //       },
+  //       quantity: 1
+  //     }
+  //   ],
+  //   customer_email: cart.email,
+  //   mode: 'setup',
+  //   success_url: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}`,
+  //   cancel_url: `${process.env.NEXT_CLIENT_BASE_URL}/checkout`
+  // })
   // 6. update order session id
   await db
     .collection('orders')
-    .updateOne({ _id: insertedId }, { $set: { sessionId: session.id, successUrl: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}` } })
-  res.status(200).json(session)
+    .updateOne({ _id: insertedId }, { $set: { successUrl: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}` } })
+  res.status(200).json({orderId: insertedId})
 }

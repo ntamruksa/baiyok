@@ -114,6 +114,7 @@
   "categoryOrder" : 2,
   "options" : [
     {"title": "Snow Pea", "priceInCents" : 0},
+    {"title": "Chicken", "priceInCents" : 0},
     {"title": "Local King Prawn", "priceInCents" : 300}
   ],
   "image" : "https://res.cloudinary.com/dua4rx5cz/image/upload/v1602224840/baiyok/kwlju6nf8w1ulavr0cdt.jpg"
