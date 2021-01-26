@@ -16,9 +16,9 @@ const CartItemStyles = styled.li`
   }
 `;
 
-const CartItem = ({ cartItem, refreshCart }) => (
+const CartItem = ({ cartItem }) => (
   <CartItemStyles>
-    <img width="80" src={cartItem.item.image} alt={cartItem.item.title} />
+    <img width="80" src={cartItem.item.image} />
     <div className="cart-item-details">
       <h3 className='text-left'>{cartItem.item.title}</h3>
       {cartItem.option && <p className='text-left'>{cartItem.option.title} {cartItem.option.priceInCents > 0 ? `(${formatMoney(cartItem.option.priceInCents)})` : ''}</p>}

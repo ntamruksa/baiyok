@@ -29,7 +29,9 @@ export default async (req, res) => {
     pickupTime: cart.pickupTime,
     phone: cart.phone,
     orderNumber: paddedOrderNum,
-    paymentMethodId: cart.paymentMethodId
+    paymentMethodId: cart.paymentMethodId,
+    address: cart.address,
+    option: cart.option
   }
   // 2. recalculate the total of the price
   const amount = order.items.reduce(

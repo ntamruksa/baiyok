@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap'
 import { getCart } from '../../services/cart'
 import formatMoney from '../../services/formatMoney'
 import CartItem from './CartItem'
-import CheckoutCart from './CheckoutCart'
+import CheckoutCart from '../checkout/CheckoutCart'
 
 function useOutsideAlerter(ref, hideCart) {
   useEffect(() => {

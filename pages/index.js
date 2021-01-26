@@ -19,13 +19,13 @@ export default function Home() {
                 alt='First slide'
               />
             </Carousel.Item>
-            <Carousel.Item>
+            {/* <Carousel.Item>
               <img
                 className='d-block w-100'
-                src='/baiyok-fish.jpg'
-                alt='Third slide'
+                src='https://res.cloudinary.com/dua4rx5cz/image/upload/v1602304532/baiyok/do7ceyie0wfx5jq5bo6f.jpg'
+                alt='Secone slide'
               />
-            </Carousel.Item>
+            </Carousel.Item> */}
             <Carousel.Item>
               <img
                 className='d-block w-100'
