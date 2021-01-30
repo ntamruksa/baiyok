@@ -1,14 +1,17 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
-
+import InfoMessageModal from '../modal/InfoMessageModal'
 class AddressForm extends React.Component {
   constructor(props) {
     super(props)
     this.widget = null
     this.state = {
+      cannotDelivery: false,
       validSuburb: ['CASTLECRAG', 'MIDDLE COVE', 'CASTLE COVE', 'NORTHBRIDGE', 'WILLOUGHBY', 'ROSEVILLE CHASE']
     }
     this.loadWidget = this.loadWidget.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handleShow = this.handleShow.bind(this)
   }
 
   componentDidMount() {
@@ -25,6 +28,13 @@ class AddressForm extends React.Component {
       this.widget.destroy()
       this.widget = null
     }
+  }
+
+  handleClose() {
+    this.setState({cannotDelivery: false})
+  }
+  handleShow() {
+    this.setState({cannotDelivery: true})
   }
 
   loadWidget() {
@@ -46,7 +56,7 @@ class AddressForm extends React.Component {
       let e = {}
       if (!this.state.validSuburb.includes(metaData.locality_name)){
         e = {target: {id: 'address_full'}, fullAddress: '', metaData: undefined}
-        alert('invalid suburb')
+        this.handleShow()
       } else {
         e = {target: {id: 'address_full'}, fullAddress, metaData}
       }
@@ -60,6 +70,8 @@ class AddressForm extends React.Component {
 
   render() {
     return (
+      <>
+      <InfoMessageModal message={'We cannot delivery to your address, please select pickup option instead.'} show={this.state.cannotDelivery} onHide={this.handleClose}/>
       <Form.Group controlId='formPickupName' className='u-margin-bottom-med'>
         <Form.Label>Delivery Address</Form.Label>
         <Form.Control
@@ -71,6 +83,7 @@ class AddressForm extends React.Component {
           onChange={this.props.onChange}
         />
       </Form.Group>
+      </>
     )
   }
 }

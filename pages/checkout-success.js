@@ -50,16 +50,26 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
             {order.status !== 'open' && (
               <>
                 <Row>
-                  <Col className='text-right px-0'>Pickup Name:</Col>
+                  <Col className='text-right px-0'>Name:</Col>
                   <Col className='text-left'>{`${order.pickupName}`}</Col>
                 </Row>
-                <Row>
-                  <Col className='text-right px-0'>Pickup Time:</Col>
-                  <Col className='text-left'>
-                    {order.pickupTime}{' '}
-                    {order.delayMins ? `(+ Delay ${order.delayMins} mins)` : ''}
-                  </Col>
-                </Row>
+                {order.option === 'pickup' && (
+                  <Row>
+                    <Col className='text-right px-0'>Pickup Time:</Col>
+                    <Col className='text-left'>
+                      {order.pickupTime}{' '}
+                      {order.delayMins
+                        ? `(+ Delay ${order.delayMins} mins)`
+                        : ''}
+                    </Col>
+                  </Row>
+                )}
+                {order.option === 'delivery' && (
+                  <Row>
+                    <Col className='text-right px-0'>Delivery Address:</Col>
+                    <Col className='text-left'>{order.address}</Col>
+                  </Row>
+                )}
                 <Row>
                   <Col className='text-right px-0'>Contact number:</Col>
                   <Col className='text-left'>{`${order.phone}`}</Col>
@@ -85,11 +95,21 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
                     </Row>
                   ))}
                 {adjustItem && (
-                  <Row
-                  className='justify-content-start checkout-success-item'>
+                  <Row className='justify-content-start checkout-success-item'>
                     <CartItemCheckout
                       cartItem={adjustItem}
                       refreshCart={refreshCart}
+                    />
+                  </Row>
+                )}
+                {order.option === 'delivery' && (
+                  <Row className='justify-content-start checkout-success-item'>
+                    <CartItemCheckout
+                      cartItem={{
+                        quantity: 1,
+                        totalPrice: order.deliveryFeeInCents,
+                        item: { image: '', title: 'Delivery Fee' },
+                      }}
                     />
                   </Row>
                 )}

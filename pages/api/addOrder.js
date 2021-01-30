@@ -31,43 +31,10 @@ export default async (req, res) => {
     orderNumber: paddedOrderNum,
     paymentMethodId: cart.paymentMethodId,
     address: cart.address,
-    option: cart.option
+    option: cart.option,
+    deliveryFeeInCents: cart.deliveryFeeInCents,
   }
-  // 2. recalculate the total of the price
-  const amount = order.items.reduce(
-    (tally, item) => tally + item.totalPrice * item.quantity,
-    0
-  )
-  console.log(`Going to charge for total amount of ${amount}`)
-  // 3. create stripe charge
-  // const charge = await stripe.charges.create({
-  //   amount: amount + 100,
-  //   currency: 'AUD',
-  //   source: cart.token
-  // })
-  // 4. save order to db
   const { insertedId } = await db.collection('orders').insertOne(order)
-  // 5. create stripe session
-  // const session = await stripe.checkout.sessions.create({
-  //   payment_method_types: ['card'],
-  //   line_items: [
-  //     {
-  //       price_data: {
-  //         currency: 'aud',
-  //         product_data: {
-  //           name: 'meals'
-  //         },
-  //         unit_amount: amount
-  //       },
-  //       quantity: 1
-  //     }
-  //   ],
-  //   customer_email: cart.email,
-  //   mode: 'setup',
-  //   success_url: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}`,
-  //   cancel_url: `${process.env.NEXT_CLIENT_BASE_URL}/checkout`
-  // })
-  // 6. update order session id
   await db
     .collection('orders')
     .updateOne({ _id: insertedId }, { $set: { successUrl: `${process.env.NEXT_CLIENT_BASE_URL}/checkout-success?orderId=${insertedId}` } })

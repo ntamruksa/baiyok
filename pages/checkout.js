@@ -19,13 +19,24 @@ export default function Checkout() {
   const [blockedTimeList, setBlockedTimeList] = useState({ blockedTime: [] })
   const [time, setTime] = useState(null)
   const [address, setAddress] = useState('')
+  const [deliveryFeeInCentsConst] = useState(300)
   const selectPickup = () => {
     setIsPickup(true)
     setIsDelivery(false)
+    if (cart.deliveryFeeInCents && cart.deliveryFeeInCents === deliveryFeeInCentsConst) {
+      setCart({...cart, deliveryFeeInCents: 0, cartTotal: cart.cartTotal - cart.deliveryFeeInCents,  cartSubTotal: cart.cartTotal - cart.deliveryFeeInCents})
+    } else {
+      setCart({...cart, deliveryFeeInCents: 0})
+    }
   }
   const selectDelivery = () => {
     setIsPickup(false)
     setIsDelivery(true)
+    if (!cart.deliveryFeeInCents || cart.deliveryFeeInCents === 0) {
+      setCart({...cart, deliveryFeeInCents: deliveryFeeInCentsConst, cartTotal: cart.cartTotal + deliveryFeeInCentsConst,  cartSubTotal: cart.cartTotal + deliveryFeeInCentsConst})
+    } else {
+      setCart({...cart, deliveryFeeInCents: deliveryFeeInCentsConst})
+    }
   }
   const availableTime = Number(
     moment().add(20, 'minutes').hours().toString() +
@@ -116,6 +127,7 @@ export default function Checkout() {
             isDelivery={isDelivery}
             selectPickup={selectPickup}
             selectDelivery={selectDelivery}
+            cart={cart}
           />
           {isPickup && (
             <CheckoutPickupDetail

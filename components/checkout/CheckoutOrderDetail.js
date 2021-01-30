@@ -15,6 +15,7 @@ const CheckoutOrderDetail = ({ cart }) => {
             cart.items.map((cartItem, idx) => (
               <CartItemCheckout key={idx} cartItem={cartItem} />
             ))}
+            {cart && cart.deliveryFeeInCents > 0 && <CartItemCheckout cartItem={{quantity: 1, totalPrice: cart.deliveryFeeInCents, item: {image: '', title: 'Delivery Fee'}}} />}
         </ul>
         <footer>
           <h2>TOTAL {cart && formatMoney(cart.cartSubTotal)}</h2>
