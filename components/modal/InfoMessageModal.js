@@ -13,7 +13,7 @@ const InfoMessageModal = ({ message, show, onHide }) => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant='secondary' onClick={onHide}>Close</Button>
+        <Button className='theme-btn' onClick={onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   )
