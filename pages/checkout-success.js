@@ -6,6 +6,7 @@ import api from '../services/API'
 import formatMoney from '../services/formatMoney'
 import CartItemCheckout from '../components/checkout/CartItemCheckout'
 import { clearCart, getCart } from '../services/cart'
+import moment from 'moment'
 // import styles from '../styles/Home.module.css'
 
 const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
@@ -49,6 +50,10 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
             )}
             {order.status !== 'open' && (
               <>
+                <Row>
+                  <Col className='text-right px-0'>Placed On:</Col>
+                  <Col className='text-left'>{`${moment(order.createdDate).format('ddd DD-MMM-YYYY HH:mm')}`}</Col>
+                </Row>
                 <Row>
                   <Col className='text-right px-0'>Name:</Col>
                   <Col className='text-left'>{`${order.pickupName}`}</Col>
@@ -115,7 +120,7 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
                 )}
                 <Row className='justify-content-center cart-checkout-success'>
                   <footer>
-                    <Col className='text-right px-0'>Total:</Col>
+                    <Col className='text-right px-0'>Total (inc.GST) :</Col>
                     <Col className='text-left'>{`${formatMoney(
                       order.totalInCents
                     )}`}</Col>

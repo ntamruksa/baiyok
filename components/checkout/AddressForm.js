@@ -54,11 +54,11 @@ class AddressForm extends React.Component {
       // this.props.binding.onChange(fullAddress)
       console.log(metaData, fullAddress)
       let e = {}
-      if (!this.state.validSuburb.includes(metaData.locality_name)){
+      if (this.state.validSuburb.includes(metaData.locality_name) && metaData.state_territory === 'NSW'){
+        e = {target: {id: 'address_full'}, fullAddress, metaData}
+      } else {
         e = {target: {id: 'address_full'}, fullAddress: '', metaData: undefined}
         this.handleShow()
-      } else {
-        e = {target: {id: 'address_full'}, fullAddress, metaData}
       }
       this.props.onChange(e)
 
