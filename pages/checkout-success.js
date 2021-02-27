@@ -19,13 +19,13 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
       setGlobalCart(getCart())
       const response = orderId ? await api.getOrder(orderId) : undefined
       setOrder(response)
-      if (order.adjustInCents) {
+      if (response.adjustInCents) {
         const item = {
           quantity: 1,
           item: {
-            title: order.adjustNote,
+            title: response.adjustNote,
           },
-          totalPrice: order.adjustInCents,
+          totalPrice: response.adjustInCents,
         }
         setAdjustItem(item)
       }
