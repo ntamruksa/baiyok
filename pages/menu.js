@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Col,
   Container,
   Row,
   Spinner,
   Accordion,
-  Button,
-  Card
+  Button
 } from 'react-bootstrap'
 import MenuItem from '../components/common/MenuItem'
 import { CATEGORIES } from '../components/StaticData'
-import Icon from '../components/common/FontAwesome'
+import moment from 'moment'
 
 import api from '../services/API'
 
-const Menu = ({hideCart, setGlobalCart}) => {
+const Menu = ({ hideCart, setGlobalCart }) => {
+  const timeFormat = 'hh:mm:ss'
   const [showModal, setShowModal] = useState(false)
-  const [menuitems, setMenuitems] = useState([])
+  const { data: menuitems, isLoading, isError } = api.menuItemQuery()
+  const { data: businessHours } = api.businessHours()
+  const today = moment().format('dddd').toLowerCase()
+  const openTime = moment('17:30:00', timeFormat)
+  const shopOpen = !(businessHours?.isTodayClosed || !businessHours?.closedDays?.includes(today) || moment().isBefore(openTime))
   const closeModal = () => {
     setShowModal(false)
   }
@@ -26,19 +30,21 @@ const Menu = ({hideCart, setGlobalCart}) => {
     navigate('/')
   }
 
-  useEffect(() => {
-    console.log('load menu')
-    async function fetchData() {
-      const response = await api.getMenuItems()
-      setMenuitems(response)
-    }
-    fetchData()
-  }, [])
-
   return (
     <section className='section py-5 order-section'>
       <Container>
-        {menuitems.length === 0 ? (
+        <section className='section section-banner'>
+          <div>
+            {businessHours?.isTodayClosed
+              ? `Online order closed today`
+              : businessHours?.closedDays?.includes(today)
+              ? `Restaurant is closed today`
+              : moment().isBefore(openTime)
+              ? `Opens at 5:30 pm`
+              : ''}
+          </div>
+        </section>
+        {isLoading ? (
           <>
             <Spinner animation='border' variant='primary' className='mr-2' />{' '}
             Loading menu...
@@ -47,7 +53,6 @@ const Menu = ({hideCart, setGlobalCart}) => {
           <>
             {CATEGORIES.map(({ title, category }) => (
               <Accordion defaultActiveKey={title}>
-                {/* <Card> */}
                 <Row key={title}>
                   <Col md={12}>
                     <Accordion.Toggle
@@ -62,31 +67,30 @@ const Menu = ({hideCart, setGlobalCart}) => {
                     </Accordion.Toggle>
 
                     <Accordion.Collapse eventKey={title} show>
-                      {/* <div className='bg-white rounded border shadow-sm mb-4'> */}
                       <Row>
-                        {menuitems
-                          .filter((item) => item.category === category)
-                          // .sort((a, b) =>
-                          //   a.title.localeCompare(b.title, undefined, {
-                          //     sensitivity: 'accent'
-                          //   })
-                          // )
-                          .map((item) => (
-                            <Col
-                              key={item._id}
-                              md={4}
-                              sm={6}
-                              xs={12}
-                              className='d-flex flex-grow-1'>
-                              <MenuItem key={item._id} item={item} hideCart={hideCart} setGlobalCart={setGlobalCart}/>
-                            </Col>
-                          ))}
+                        {menuitems &&
+                          menuitems
+                            .filter((item) => item.category === category)
+                            .map((item) => (
+                              <Col
+                                key={item._id}
+                                md={4}
+                                sm={6}
+                                xs={12}
+                                className='d-flex flex-grow-1'>
+                                <MenuItem
+                                  key={item._id}
+                                  item={item}
+                                  hideCart={hideCart}
+                                  setGlobalCart={setGlobalCart}
+                                  shopOpen={shopOpen}
+                                />
+                              </Col>
+                            ))}
                       </Row>
-                      {/* </div> */}
                     </Accordion.Collapse>
                   </Col>
                 </Row>
-                {/* </Card> */}
               </Accordion>
             ))}
           </>

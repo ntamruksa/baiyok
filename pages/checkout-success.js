@@ -52,7 +52,9 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
               <>
                 <Row>
                   <Col className='text-right px-0'>Placed On:</Col>
-                  <Col className='text-left'>{`${moment(order.createdDate).format('ddd DD-MMM-YYYY HH:mm')}`}</Col>
+                  <Col className='text-left'>{`${moment(
+                    order.createdDate
+                  ).format('ddd DD-MMM-YYYY HH:mm')}`}</Col>
                 </Row>
                 <Row>
                   <Col className='text-right px-0'>Name:</Col>
@@ -70,10 +72,21 @@ const CheckoutSuccess = ({ orderId, refreshCart, setGlobalCart }) => {
                   </Row>
                 )}
                 {order.option === 'delivery' && (
-                  <Row>
-                    <Col className='text-right px-0'>Delivery Address:</Col>
-                    <Col className='text-left'>{order.address}</Col>
-                  </Row>
+                  <>
+                    <Row>
+                      <Col className='text-right px-0'>Delivery Time:</Col>
+                      <Col className='text-left'>
+                        {moment(order.deliveryTime).format('hh:mm a')}{' '}
+                        {order.delayMins
+                          ? `(+ Delay ${order.delayMins} mins)`
+                          : ''}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className='text-right px-0'>Delivery Address:</Col>
+                      <Col className='text-left'>{order.address}</Col>
+                    </Row>
+                  </>
                 )}
                 <Row>
                   <Col className='text-right px-0'>Contact number:</Col>

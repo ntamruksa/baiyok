@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useQuery } from 'react-query'
 
 export const client = axios.create({
   baseURL: '',
@@ -9,6 +10,10 @@ export const client = axios.create({
 
 const getMenuItems = () => {
   return client.get(`/api/menuitems`).then((res) => res.data)
+}
+
+function menuItemQuery() {
+  return useQuery('menuitems', () => getMenuItems())
 }
 
 const addBooking = (reservation) => {
@@ -45,6 +50,14 @@ const sendOrderEmail = (orderId) => {
     .then((res) => res.data)
 }
 
+const getBusinessHours = () => {
+  return client.get(`/api/businessHours`).then((res) => res.data)
+}
+
+function businessHours() {
+  return useQuery('businessHours', () => getBusinessHours())
+}
+
 export default {
   getMenuItems,
   addBooking,
@@ -53,5 +66,7 @@ export default {
   getBookingSetup,
   addOrder,
   getOrder,
-  sendOrderEmail
+  sendOrderEmail,
+  menuItemQuery,
+  businessHours
 }

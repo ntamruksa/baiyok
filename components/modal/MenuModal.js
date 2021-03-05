@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Modal, Row, Col } from 'react-bootstrap'
 import { addItemToCart, getCart } from '../../services/cart'
-const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
+const MenuModal = ({ show, onHide, item, setGlobalCart, shopOpen = true }) => {
   const [itemTotalPriceInCents, setItemTotalPriceInCents] = useState(
     item.priceInCents
   )
@@ -147,7 +147,7 @@ const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
               </div>
             </>
           )}
-          {item.dinein !== true ? (
+          {item.dinein !== true && shopOpen ? (
             <>
               <div className='menu-modal-option-header'>
                 <div className='menu-modal-option-header-title'>
@@ -175,7 +175,7 @@ const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
           ) : (
             <></>
           )}
-          {item.dinein === true ? (
+          {item.dinein === true || !shopOpen ? (
             <Row>
               <Col className='theme-btn p-4 mx-4' align='right'>
                 ${((itemTotalPriceInCents * quantity) / 100).toFixed(2)}
@@ -203,7 +203,7 @@ const MenuModal = ({ show, onHide, item, setGlobalCart }) => {
                   <button
                     className='theme-btn full-width-btn mb-0 p-4'
                     disabled>
-                    {`Unavailable`}
+                    {`Sold Out`}
                   </button>
                 ) : (
                   <button

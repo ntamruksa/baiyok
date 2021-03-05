@@ -22,7 +22,7 @@ export default async (req, res) => {
   // get email template
   let { emailTemplate, emailSubject } = await db
     .collection('tech_configs')
-    .findOne(findNotDeleted({}))
+    .findOne(findNotDeleted({key: 'email'}))
   emailTemplate = emailTemplate
     .replace('{pickupName}', order.pickupName)
     .replace('{orderNumber}', `#${order.orderNumber}`)

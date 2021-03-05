@@ -1,4 +1,11 @@
-import { Form, Button, Container, FormControl, ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
+import {
+  Form,
+  Button,
+  Container,
+  FormControl,
+  ToggleButtonGroup,
+  ToggleButton,
+} from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 // import TimePicker from 'rc-time-picker'
@@ -22,7 +29,10 @@ export default function Book() {
   const [note, setNote] = useState(undefined)
   const [isValid, setIsValid] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [blockedTimeList, setBlockedTimeList] = useState({blockedTime: [], isDateBlocked: false})
+  const [blockedTimeList, setBlockedTimeList] = useState({
+    blockedTime: [],
+    isDateBlocked: false,
+  })
   const [errorMessage, setErrorMessage] = useState(null)
   const timeList = [
     { id: 530, label: '5:30 pm' },
@@ -41,7 +51,7 @@ export default function Book() {
     { id: 845, label: '8:45 pm' },
     { id: 900, label: '9:00 pm' },
     { id: 915, label: '9:15 pm' },
-    { id: 930, label: '9:30 pm' }
+    { id: 930, label: '9:30 pm' },
   ]
   useEffect(() => {
     const validPhoneNumber = (n) =>
@@ -66,11 +76,12 @@ export default function Book() {
 
   useEffect(() => {
     async function fetchData() {
-      const {blockedTime, isDateBlocked} = await api.getBookingSetup(moment(date).format('DD-MM-yyyy'))
-      setBlockedTimeList({blockedTime, isDateBlocked})
+      const { blockedTime, isDateBlocked } = await api.getBookingSetup(
+        moment(date).format('DD-MM-yyyy')
+      )
+      setBlockedTimeList({ blockedTime, isDateBlocked })
     }
     fetchData()
-
   }, [date])
 
   const handleInputChange = (e) => {
@@ -113,7 +124,7 @@ export default function Book() {
       party,
       date: moment(date).format('ddd DD MMM YYYY'),
       time,
-      note
+      note,
     }
     const text = `${party} persons on ${moment(date).format(
       'ddd DD MMM YYYY'
@@ -122,11 +133,11 @@ export default function Book() {
     }`
     const payload = {
       text,
-      channel: 'baiyok-reservation'
+      channel: 'baiyok-reservation',
     }
     fetch(process.env.NEXT_PUBLIC_SLACK_HOOK_URL, {
       method: 'post',
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     })
       .then((res) => {
         api
@@ -136,7 +147,7 @@ export default function Book() {
             setIsLoading(false)
             router.push({
               pathname: '/thankyou-booking',
-              query: { bookingId: bookingRes.insertedId }
+              query: { bookingId: bookingRes.insertedId },
             })
           })
           .catch((err) => {
@@ -154,10 +165,10 @@ export default function Book() {
       })
   }
   const monday = {
-    daysOfWeek: [1]
+    daysOfWeek: [1],
   }
   const past = {
-    before: new Date()
+    before: new Date(),
   }
   const disabledMinutes = (h) => {
     const currentHour = parseInt(moment().format('HH'))
@@ -204,7 +215,7 @@ export default function Book() {
       15,
       16,
       22,
-      23
+      23,
     ]
     // const now = moment().format('HH')
     // for (let i = 0; i < parseInt(now); i++) {
@@ -216,9 +227,7 @@ export default function Book() {
     <Container>
       <section className='section-book'>
         <div className='u-center-text u-margin-bottom-small'>
-          <h2 className='heading-secondary'>
-            Book a table
-          </h2>
+          <h2 className='heading-secondary'>Book a table</h2>
         </div>
         <div className='section-covid__form form-container u-margin-bottom-big'>
           <Form className='form'>
@@ -277,19 +286,51 @@ export default function Book() {
                 <Form.Label>
                   Select time for {moment(date).format('DD MMM YYYY')}
                 </Form.Label>
-                <ToggleButtonGroup size="lg" className="m-2 flex-wrap" name="time" >
-                  {timeList.map(t => {
-                    if (blockedTimeList.isDateBlocked)
-                    {
-                      return (<ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" disabled value={t.label} key={t.label}>{t.label}</ToggleButton>)
-                    } else if (blockedTimeList.blockedTime && blockedTimeList.blockedTime.includes(t.id)) {
-                      return (<ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" disabled value={t.label} key={t.label}>{t.label}</ToggleButton>)
+                <ToggleButtonGroup
+                  size='lg'
+                  className='m-2 flex-wrap'
+                  name='time'>
+                  {timeList.map((t) => {
+                    if (blockedTimeList.isDateBlocked) {
+                      return (
+                        <ToggleButton
+                          name='time'
+                          variant='outline-success'
+                          className='btn m-2 flex-grow-0'
+                          disabled
+                          value={t.label}
+                          key={t.label}>
+                          {t.label}
+                        </ToggleButton>
+                      )
+                    } else if (
+                      blockedTimeList.blockedTime &&
+                      blockedTimeList.blockedTime.includes(t.id)
+                    ) {
+                      return (
+                        <ToggleButton
+                          name='time'
+                          variant='outline-success'
+                          className='btn m-2 flex-grow-0'
+                          disabled
+                          value={t.label}
+                          key={t.label}>
+                          {t.label}
+                        </ToggleButton>
+                      )
                     } else {
                       return (
-                        <ToggleButton name="time" variant='outline-success' className="btn m-2 flex-grow-0" onClick={handleTimeChange} value={t.label} key={t.label}>{t.label}</ToggleButton>
+                        <ToggleButton
+                          name='time'
+                          variant='outline-success'
+                          className='btn m-2 flex-grow-0'
+                          onClick={handleTimeChange}
+                          value={t.label}
+                          key={t.label}>
+                          {t.label}
+                        </ToggleButton>
                       )
                     }
-
                   })}
                 </ToggleButtonGroup>
               </Form.Group>
