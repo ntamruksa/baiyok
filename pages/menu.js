@@ -20,7 +20,7 @@ const Menu = ({ hideCart, setGlobalCart }) => {
   const { data: businessHours } = api.businessHours()
   const today = moment().format('dddd').toLowerCase()
   const openTime = moment('17:30:00', timeFormat)
-  const shopOpen = !(businessHours?.isTodayClosed || !businessHours?.closedDays?.includes(today) || moment().isBefore(openTime))
+  const shopOpen = !(businessHours?.isTodayClosed || businessHours?.closedDays?.includes(today) || moment().isBefore(openTime))
   const closeModal = () => {
     setShowModal(false)
   }
