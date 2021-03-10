@@ -36,7 +36,7 @@ const Menu = ({ hideCart, setGlobalCart }) => {
     <section className='section py-5 order-section'>
       <Container>
         <section className='section section-banner'>
-          <div>
+          <div className='notification'>
             {businessHours?.isTodayClosed
               ? `Online order closed today`
               : businessHours?.closedDays?.includes(today)
