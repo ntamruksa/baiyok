@@ -58,6 +58,14 @@ function businessHours() {
   return useQuery('businessHours', () => getBusinessHours())
 }
 
+const getDateConfig = (date) => {
+  return client.get(`/api/getDateConfig?date=${date}`).then((res) => res.data)
+}
+
+function dateConfig(date) {
+  return useQuery(['dateConfig', date], () => getDateConfig(date))
+}
+
 export default {
   getMenuItems,
   addBooking,
@@ -68,5 +76,6 @@ export default {
   getOrder,
   sendOrderEmail,
   menuItemQuery,
-  businessHours
+  businessHours,
+  dateConfig
 }

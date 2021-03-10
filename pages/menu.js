@@ -15,12 +15,14 @@ import api from '../services/API'
 
 const Menu = ({ hideCart, setGlobalCart }) => {
   const timeFormat = 'hh:mm:ss'
+  const todayDate = moment().format('DD-MM-yyyy')
   const [showModal, setShowModal] = useState(false)
   const { data: menuitems, isLoading, isError } = api.menuItemQuery()
   const { data: businessHours } = api.businessHours()
+  const {data: dateConfig} = api.dateConfig(todayDate)
   const today = moment().format('dddd').toLowerCase()
   const openTime = moment('17:30:00', timeFormat)
-  const shopOpen = !(businessHours?.isTodayClosed || businessHours?.closedDays?.includes(today) || moment().isBefore(openTime))
+  const shopOpen = !(businessHours?.isTodayClosed || businessHours?.closedDays?.includes(today) || moment().isBefore(openTime) || dateConfig?.date === todayDate)
   const closeModal = () => {
     setShowModal(false)
   }
@@ -38,6 +40,8 @@ const Menu = ({ hideCart, setGlobalCart }) => {
             {businessHours?.isTodayClosed
               ? `Online order closed today`
               : businessHours?.closedDays?.includes(today)
+              ? `Restaurant is closed today`
+              : dateConfig?.date === todayDate
               ? `Restaurant is closed today`
               : moment().isBefore(openTime)
               ? `Opens at 5:30 pm`
